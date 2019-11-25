@@ -43,7 +43,7 @@ extension LoginViewController {
     
     func ownerLogin() {
         
-        let passingData = loginRequired(account: accountTextField.text!, password: passwordTextField.text!)
+        let passingData = LoginRequired(account: accountTextField.text!, password: passwordTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
                 
         let url = URL(string: "http://5c390001.ngrok.io/api/wolf/login")!

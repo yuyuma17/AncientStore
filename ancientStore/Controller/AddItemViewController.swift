@@ -10,11 +10,15 @@ import UIKit
 
 class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let tokens = SavedToken.shared
     var mode = Mode.Add
     let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var itemSortTextField: UITextField!
+    @IBOutlet weak var itemPriceTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +56,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         switch mode {
             
         case .Add:
+            addNewItem()
             let alert = UIAlertController(title: "新增成功", message: "", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "好", style: .default) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)
@@ -66,5 +71,32 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
             alert.addAction(alertAction)
             present(alert, animated: true)
         }
+    }
+}
+
+extension AddItemViewController {
+    
+    func addNewItem() {
+        
+        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, sort_name: "我是分類", price: itemPriceTextField.text!)
+        guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
+        
+        let url = URL(string: "http://5c390001.ngrok.io/api/wolf/items")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "Post"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
+            if let error = error {
+                print ("error: \(error)")
+                return
+            }
+            if let response = response as? HTTPURLResponse {
+                print("status code: \(response.statusCode)")
+            }
+        }
+        task.resume()
     }
 }

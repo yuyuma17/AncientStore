@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct loginRequired: Codable {
+struct LoginRequired: Codable {
     
     let account: String
     let password: String
@@ -30,6 +30,15 @@ class SavedToken {
     
     static let shared = SavedToken()
     var savedToken: LoginReceived.LoginReceivedInfor?
+    
+}
+
+struct AddNewItemRequired: Codable {
+    
+    let item_name: String
+    let sort_id: String
+    let sort_name: String
+    let price : String
     
 }
 
