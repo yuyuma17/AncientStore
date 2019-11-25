@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
 
     let items = AllItemsClass.shared
+    let tokens = SavedToken.shared
     
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -69,6 +70,8 @@ extension LoginViewController {
                             if let storeNavi = self.storyboard?.instantiateViewController(withIdentifier: "StoreNaviVC") as? UINavigationController {
                                 if let destination = storeNavi.viewControllers.first as? StoreViewController {
                                     
+                                    self.decodeData(data!)
+                                    print(self.tokens.savedToken)
                                     self.present(storeNavi, animated: true, completion: nil)
                                 }
                             }
@@ -79,6 +82,13 @@ extension LoginViewController {
             }
         }
         task.resume()
+    }
+    
+    func decodeData(_ data: Data) {
+        let decoder = JSONDecoder()
+        if let data = try? decoder.decode(LoginReceived.self, from: data) {
+            tokens.savedToken = data.now_flower
+        }
     }
     
     func getAllItems() {

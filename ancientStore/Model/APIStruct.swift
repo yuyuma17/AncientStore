@@ -15,6 +15,24 @@ struct loginRequired: Codable {
     
 }
 
+struct LoginReceived: Codable {
+    
+    let now_flower: LoginReceivedInfor
+    
+    struct LoginReceivedInfor: Codable {
+        
+        var api_token: String?
+        
+    }
+}
+
+class SavedToken {
+    
+    static let shared = SavedToken()
+    var savedToken: LoginReceived.LoginReceivedInfor?
+    
+}
+
 struct AllItemsStruct: Codable {
     
     let items: [Items]

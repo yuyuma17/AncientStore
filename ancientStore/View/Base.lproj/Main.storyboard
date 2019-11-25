@@ -140,56 +140,36 @@
                                                         <constraint firstAttribute="height" constant="90" id="Flg-4e-9Um"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="OiF-Ji-AIu">
-                                                    <rect key="frame" x="120" y="27.666666666666664" width="232" height="70.666666666666686"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pSL-nU-qKt">
+                                                    <rect key="frame" x="120" y="53" width="197" height="20.333333333333329"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pSL-nU-qKt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="197" height="20.333333333333332"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名稱：糧草" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-9V-bjS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="20.333333333333332"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="價格：100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWG-uJ-yf8">
-                                                                    <rect key="frame" x="116.66666666666666" y="0.0" width="80.333333333333343" height="20.333333333333332"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="lbq-vw-CNO">
-                                                            <rect key="frame" x="0.0" y="50.333333333333329" width="232" height="20.333333333333329"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="簡介：給馬吃的。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnW-nS-58g">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="138.66666666666666" height="20.333333333333332"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="庫存：3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ent-mD-BQl">
-                                                                    <rect key="frame" x="169.66666666666669" y="0.0" width="62.333333333333343" height="20.333333333333332"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名稱：糧草" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-9V-bjS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="20.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="價格：100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWG-uJ-yf8">
+                                                            <rect key="frame" x="116.66666666666666" y="0.0" width="80.333333333333343" height="20.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="1Qu-h9-num" secondAttribute="bottom" constant="18" id="5KB-tw-9Y2"/>
+                                                <constraint firstItem="pSL-nU-qKt" firstAttribute="centerY" secondItem="tN2-oc-Ic8" secondAttribute="centerY" id="64O-TA-23h"/>
                                                 <constraint firstItem="1Qu-h9-num" firstAttribute="top" secondItem="tN2-oc-Ic8" secondAttribute="top" constant="18" id="6NW-NC-kyo"/>
-                                                <constraint firstItem="OiF-Ji-AIu" firstAttribute="centerY" secondItem="tN2-oc-Ic8" secondAttribute="centerY" id="GIx-hz-Lqf"/>
-                                                <constraint firstItem="OiF-Ji-AIu" firstAttribute="leading" secondItem="1Qu-h9-num" secondAttribute="trailing" constant="10" id="gmO-az-2QV"/>
                                                 <constraint firstItem="1Qu-h9-num" firstAttribute="leading" secondItem="tN2-oc-Ic8" secondAttribute="leading" constant="20" id="mPX-Qq-GEH"/>
+                                                <constraint firstItem="pSL-nU-qKt" firstAttribute="leading" secondItem="1Qu-h9-num" secondAttribute="trailing" constant="10" id="mhT-SE-im0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="itemImageView" destination="1Qu-h9-num" id="Xm8-41-DTo"/>
+                                            <outlet property="itemNameLabel" destination="2FY-9V-bjS" id="0Xx-4y-lgC"/>
+                                            <outlet property="itemPriceLabel" destination="XWG-uJ-yf8" id="LBc-lx-tju"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
