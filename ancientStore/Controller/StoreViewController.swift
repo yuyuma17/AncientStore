@@ -102,6 +102,24 @@ extension StoreViewController: UITableViewDelegate {
         
         let editVC = storyboard?.instantiateViewController(withIdentifier: "addVC") as! AddItemViewController
         editVC.mode = .Edit
+        
+        switch itemData {
+        case .Food:
+            editVC.itemName = items.sort1[indexPath.item].item_name
+            editVC.itemSort = "\(items.sort1[indexPath.item].sort_id)"
+            editVC.itemPrice = "\(items.sort1[indexPath.item].price)"
+            editVC.item_id = items.sort1[indexPath.item].id
+        case .Weapon:
+            editVC.itemName = items.sort2[indexPath.item].item_name
+            editVC.itemSort = "\(items.sort2[indexPath.item].sort_id)"
+            editVC.itemPrice = "\(items.sort2[indexPath.item].price)"
+            editVC.item_id = items.sort2[indexPath.item].id
+        case .Special:
+            editVC.itemName = items.sort3[indexPath.item].item_name
+            editVC.itemSort = "\(items.sort3[indexPath.item].sort_id)"
+            editVC.itemPrice = "\(items.sort3[indexPath.item].price)"
+            editVC.item_id = items.sort3[indexPath.item].id
+        }
         navigationController?.pushViewController(editVC, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -110,65 +128,71 @@ extension StoreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除", handler: { (action, view, success) in
-                    
-            switch self.itemData {
-            case .Food:
-                let url = URL(string: "http://5c390001.ngrok.io/api/wolf/items/\(self.items.sort1[indexPath.item].id)")!
-                var request = URLRequest(url: url)
-                request.httpMethod = "DELETE"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
-                request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
-                
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                    if let error = error {
-                        print ("error: \(error)")
-                        return
-                    }
-                    if let response = response as? HTTPURLResponse {
-                        print("status code: \(response.statusCode)")
-                    }
-                }
-                task.resume()
-            case .Weapon:
-                let url = URL(string: "http://5c390001.ngrok.io/api/wolf/items/\(self.items.sort2[indexPath.item].id)")!
-                var request = URLRequest(url: url)
-                request.httpMethod = "DELETE"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
-                request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
-                
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                    if let error = error {
-                        print ("error: \(error)")
-                        return
-                    }
-                    if let response = response as? HTTPURLResponse {
-                        print("status code: \(response.statusCode)")
-                    }
-                }
-                task.resume()
-            case .Special:
-                let url = URL(string: "http://5c390001.ngrok.io/api/wolf/items/\(self.items.sort3[indexPath.item].id)")!
-                var request = URLRequest(url: url)
-                request.httpMethod = "DELETE"
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
-                request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
-                
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                    if let error = error {
-                        print ("error: \(error)")
-                        return
-                    }
-                    if let response = response as? HTTPURLResponse {
-                        print("status code: \(response.statusCode)")
-                    }
-                }
-                task.resume()
-            }
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let alert = UIAlertController(title: "要刪除嗎？", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                switch self.itemData {
+                case .Food:
+                    let url = URL(string: "http://35.234.60.173/api/items/\(self.items.sort1[indexPath.item].id)")!
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "DELETE"
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.setValue("application/json", forHTTPHeaderField: "Accept")
+                    request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
+                    
+                    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        if let error = error {
+                            print ("error: \(error)")
+                            return
+                        }
+                        if let response = response as? HTTPURLResponse {
+                            self.getAllItems()
+                            print("status code: \(response.statusCode)")
+                        }
+                    }
+                    task.resume()
+                case .Weapon:
+                    let url = URL(string: "http://35.234.60.173/api/items/\(self.items.sort2[indexPath.item].id)")!
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "DELETE"
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.setValue("application/json", forHTTPHeaderField: "Accept")
+                    request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
+                    
+                    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        if let error = error {
+                            print ("error: \(error)")
+                            return
+                        }
+                        if let response = response as? HTTPURLResponse {
+                            self.getAllItems()
+                            print("status code: \(response.statusCode)")
+                        }
+                    }
+                    task.resume()
+                case .Special:
+                    let url = URL(string: "http://35.234.60.173/api/items/\(self.items.sort3[indexPath.item].id)")!
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "DELETE"
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.setValue("application/json", forHTTPHeaderField: "Accept")
+                    request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
+                    
+                    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        if let error = error {
+                            print ("error: \(error)")
+                            return
+                        }
+                        if let response = response as? HTTPURLResponse {
+                            self.getAllItems()
+                            print("status code: \(response.statusCode)")
+                        }
+                    }
+                    task.resume()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "不要", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
         })
         deleteAction.backgroundColor = .red
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -179,7 +203,7 @@ extension StoreViewController {
     
     func getAllItems() {
         
-        if let url = URL(string: "http://5c390001.ngrok.io/api/items") {
+        if let url = URL(string: "http://35.234.60.173/api/items") {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                     print("error: \(error.localizedDescription)")
@@ -192,9 +216,10 @@ extension StoreViewController {
                 guard let data = data else { return }
                 do {
                     let tryCatchData = try JSONDecoder().decode(AllItemsStruct.self, from: data)
-                        self.items.allItems = tryCatchData.items
+                    self.items.allItems = tryCatchData.items
                     
                     DispatchQueue.main.async {
+                        self.tableView.reloadData()
                         self.activityIndicatorView.removeFromSuperview()
                     }
                 } catch {

@@ -141,15 +141,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="126"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Qu-h9-num">
-                                                    <rect key="frame" x="20" y="18" width="90" height="90"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="AR0-2E-Pi2"/>
-                                                        <constraint firstAttribute="height" constant="90" id="Flg-4e-9Um"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="pSL-nU-qKt">
-                                                    <rect key="frame" x="120" y="53" width="197" height="20.333333333333329"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VUr-xu-DQJ">
+                                                    <rect key="frame" x="125" y="32.666666666666671" width="86.666666666666686" height="60.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名稱：糧草" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-9V-bjS">
                                                             <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="20.333333333333332"/>
@@ -158,20 +151,27 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="價格：100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWG-uJ-yf8">
-                                                            <rect key="frame" x="116.66666666666666" y="0.0" width="80.333333333333343" height="20.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="40.333333333333336" width="86.666666666666671" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Qu-h9-num">
+                                                    <rect key="frame" x="20" y="18" width="90" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="AR0-2E-Pi2"/>
+                                                        <constraint firstAttribute="height" constant="90" id="Flg-4e-9Um"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="1Qu-h9-num" secondAttribute="bottom" constant="18" id="5KB-tw-9Y2"/>
-                                                <constraint firstItem="pSL-nU-qKt" firstAttribute="centerY" secondItem="tN2-oc-Ic8" secondAttribute="centerY" id="64O-TA-23h"/>
                                                 <constraint firstItem="1Qu-h9-num" firstAttribute="top" secondItem="tN2-oc-Ic8" secondAttribute="top" constant="18" id="6NW-NC-kyo"/>
+                                                <constraint firstItem="VUr-xu-DQJ" firstAttribute="leading" secondItem="1Qu-h9-num" secondAttribute="trailing" constant="15" id="hIR-5M-fS1"/>
                                                 <constraint firstItem="1Qu-h9-num" firstAttribute="leading" secondItem="tN2-oc-Ic8" secondAttribute="leading" constant="20" id="mPX-Qq-GEH"/>
-                                                <constraint firstItem="pSL-nU-qKt" firstAttribute="leading" secondItem="1Qu-h9-num" secondAttribute="trailing" constant="10" id="mhT-SE-im0"/>
+                                                <constraint firstItem="VUr-xu-DQJ" firstAttribute="centerY" secondItem="tN2-oc-Ic8" secondAttribute="centerY" id="zT4-2H-S1h"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

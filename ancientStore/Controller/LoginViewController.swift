@@ -46,7 +46,7 @@ extension LoginViewController {
         let passingData = LoginRequired(account: accountTextField.text!, password: passwordTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
                 
-        let url = URL(string: "http://5c390001.ngrok.io/api/wolf/login")!
+        let url = URL(string: "http://35.234.60.173/api/wolf/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -60,22 +60,22 @@ extension LoginViewController {
             if let response = response as? HTTPURLResponse {
                 print("status code: \(response.statusCode)")
                 DispatchQueue.main.async {
-                    if response.statusCode == 404 {
-                        let alert = UIAlertController(title: "帳號或密碼錯誤！", message: nil, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    } else {
+                    
+                    if response.statusCode == 200 {
                         let alert = UIAlertController(title: "登入成功！", message: nil, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                             if let storeNavi = self.storyboard?.instantiateViewController(withIdentifier: "StoreNaviVC") as? UINavigationController {
                                 if let destination = storeNavi.viewControllers.first as? StoreViewController {
                                     
                                     self.decodeData(data!)
-                                    print(self.tokens.savedToken)
                                     self.present(storeNavi, animated: true, completion: nil)
                                 }
                             }
                         }))
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        let alert = UIAlertController(title: "帳號或密碼錯誤！", message: nil, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
@@ -93,7 +93,7 @@ extension LoginViewController {
     
     func getAllItems() {
         
-        if let url = URL(string: "http://5c390001.ngrok.io/api/items") {
+        if let url = URL(string: "http://35.234.60.173/api/items") {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                     print("error: \(error.localizedDescription)")

@@ -14,6 +14,11 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     var mode = Mode.Add
     let imagePicker = UIImagePickerController()
     
+    var itemName: String?
+    var itemSort: String?
+    var itemPrice: String?
+    var item_id: Int?
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameTextField: UITextField!
@@ -29,6 +34,9 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         if mode == Mode.Add {
             backgroundImageView.image = UIImage(named: "background4")
         } else {
+            itemNameTextField.text = itemName
+            itemSortTextField.text = itemSort
+            itemPriceTextField.text = itemPrice
             backgroundImageView.image = UIImage(named: "background3")
         }
     }
@@ -64,6 +72,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
             alert.addAction(alertAction)
             present(alert, animated: true)
         case .Edit:
+            reviseItem()
             let alert = UIAlertController(title: "修改成功", message: "", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "好", style: .default) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)
@@ -81,9 +90,33 @@ extension AddItemViewController {
         let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, sort_name: "我是分類", price: itemPriceTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
-        let url = URL(string: "http://5c390001.ngrok.io/api/wolf/items")!
+        let url = URL(string: "http://35.234.60.173/api/wolf/items")!
         var request = URLRequest(url: url)
         request.httpMethod = "Post"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
+            if let error = error {
+                print ("error: \(error)")
+                return
+            }
+            if let response = response as? HTTPURLResponse {
+                print("status code: \(response.statusCode)")
+            }
+        }
+        task.resume()
+    }
+    
+    func reviseItem() {
+        
+        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, sort_name: "我是分類", price: itemPriceTextField.text!)
+        guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
+        
+        let url = URL(string: "http://35.234.60.173/api/wolf/items/\(item_id!)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "Put"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
