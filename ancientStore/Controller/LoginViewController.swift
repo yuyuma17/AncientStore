@@ -10,11 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    let items = AllItemsClass.shared
+    
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getAllItems()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -64,6 +68,7 @@ extension LoginViewController {
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                             if let storeNavi = self.storyboard?.instantiateViewController(withIdentifier: "StoreNaviVC") as? UINavigationController {
                                 if let destination = storeNavi.viewControllers.first as? StoreViewController {
+                                    
                                     self.present(storeNavi, animated: true, completion: nil)
                                 }
                             }
@@ -74,5 +79,30 @@ extension LoginViewController {
             }
         }
         task.resume()
+    }
+    
+    func getAllItems() {
+        
+        if let url = URL(string: "http://5c390001.ngrok.io/api/items") {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                }
+                
+                if let response = response as? HTTPURLResponse {
+                    print("status code: \(response.statusCode)")
+                }
+                
+                guard let data = data else { return }
+                do {
+                    let tryCatchData = try JSONDecoder().decode(AllItemsStruct.self, from: data)
+                        self.items.allItems = tryCatchData.items
+                } catch {
+                    print(error.localizedDescription)
+                    let string = String(data: data, encoding: .utf8)
+                    print(string!)
+                }
+            }.resume()
+        }
     }
 }

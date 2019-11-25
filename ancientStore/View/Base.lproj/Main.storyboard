@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="137"/>
+            <point key="canvasLocation" x="220" y="137"/>
         </scene>
         <!--商店列表-->
         <scene sceneID="sWe-co-M4F">
@@ -210,6 +210,9 @@
                                                 <state key="normal" title="糧食">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="showFoodData:" destination="Esp-V5-O6l" eventType="touchUpInside" id="sMW-8K-5I0"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xz0-V3-99u">
                                                 <rect key="frame" x="138" y="0.0" width="138" height="70"/>
@@ -217,6 +220,9 @@
                                                 <state key="normal" title="武器">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="showWeaponData:" destination="Esp-V5-O6l" eventType="touchUpInside" id="sog-yi-JS9"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6u-at-YXM">
                                                 <rect key="frame" x="276" y="0.0" width="138" height="70"/>
@@ -224,6 +230,9 @@
                                                 <state key="normal" title="特殊商品">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="showSpecialData:" destination="Esp-V5-O6l" eventType="touchUpInside" id="WHm-tN-3BB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -273,7 +282,7 @@
         <!--新增商品-->
         <scene sceneID="fg5-ot-yNW">
             <objects>
-                <viewController id="JgN-Kg-d3l" customClass="AddItemViewController" customModule="ancientStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addVC" id="JgN-Kg-d3l" customClass="AddItemViewController" customModule="ancientStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uuo-Md-cqk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,23 +290,87 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background4" translatesAutoresizingMaskIntoConstraints="NO" id="FyP-dO-9rs">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i7y-LJ-aSe">
+                                <rect key="frame" x="147" y="128" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="0Cx-fL-Eow"/>
+                                    <constraint firstAttribute="height" constant="120" id="4xA-KF-XfV"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wbj-gg-2gQ">
+                                <rect key="frame" x="112" y="273" width="190" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3B-HP-Qr7">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="yLv-v3-XX0"/>
+                                        </constraints>
+                                        <state key="normal" title="拍一張美照">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="photoAPic:" destination="JgN-Kg-d3l" eventType="touchUpInside" id="26c-gA-atj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiA-5w-PtX">
+                                        <rect key="frame" x="105" y="0.0" width="85" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="4SB-kH-5AG"/>
+                                        </constraints>
+                                        <state key="normal" title="選一張美照">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectAPic:" destination="JgN-Kg-d3l" eventType="touchUpInside" id="a1B-ZZ-R9U"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWW-CC-LvK">
+                                <rect key="frame" x="205" y="431" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="34w-jy-0HO">
+                                <rect key="frame" x="205" y="375" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yX3-GP-tAL">
+                                <rect key="frame" x="205" y="490" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="i7y-LJ-aSe" firstAttribute="top" secondItem="miz-zo-mUS" secondAttribute="top" constant="40" id="39q-hy-rDy"/>
                             <constraint firstItem="FyP-dO-9rs" firstAttribute="leading" secondItem="Uuo-Md-cqk" secondAttribute="leading" id="4a4-ye-eeF"/>
+                            <constraint firstItem="wbj-gg-2gQ" firstAttribute="centerX" secondItem="Uuo-Md-cqk" secondAttribute="centerX" id="6Dz-Sb-KED"/>
                             <constraint firstItem="FyP-dO-9rs" firstAttribute="top" secondItem="miz-zo-mUS" secondAttribute="top" id="RrZ-cM-bBN"/>
                             <constraint firstAttribute="trailing" secondItem="FyP-dO-9rs" secondAttribute="trailing" id="XlW-pS-WzQ"/>
                             <constraint firstAttribute="bottom" secondItem="FyP-dO-9rs" secondAttribute="bottom" id="k4w-XD-5Kr"/>
+                            <constraint firstItem="wbj-gg-2gQ" firstAttribute="top" secondItem="i7y-LJ-aSe" secondAttribute="bottom" constant="25" id="l7a-bT-EGz"/>
+                            <constraint firstItem="i7y-LJ-aSe" firstAttribute="centerX" secondItem="Uuo-Md-cqk" secondAttribute="centerX" id="x8B-Jq-wka"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="miz-zo-mUS"/>
                     </view>
                     <navigationItem key="navigationItem" title="新增商品" id="Tlh-Uw-8zS">
                         <barButtonItem key="rightBarButtonItem" title="儲存" id="N3h-vo-R2r">
                             <connections>
-                                <action selector="addNewItem:" destination="JgN-Kg-d3l" id="GPo-wc-AYg"/>
+                                <action selector="save:" destination="JgN-Kg-d3l" id="GPo-wc-AYg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="FyP-dO-9rs" id="A4O-a4-zRj"/>
+                        <outlet property="itemImageView" destination="i7y-LJ-aSe" id="BSJ-2g-Vf8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXg-MG-b0T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

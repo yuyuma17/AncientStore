@@ -22,3 +22,11 @@ enum Mode {
         }
     }
 }
+
+enum ItemData {
+    
+    case Food
+    case Weapon
+    case Special
+    
+}

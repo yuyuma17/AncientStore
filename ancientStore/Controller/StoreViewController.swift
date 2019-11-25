@@ -9,29 +9,69 @@
 import UIKit
 
 class StoreViewController: UIViewController {
-
+    
+    let items = AllItemsClass.shared
+    var itemData = ItemData.Food
+    let activityIndicatorView = UIActivityIndicatorView(style: .large)
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
+        
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.center = view.center
+        activityIndicatorView.startAnimating()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getAllItems()
+    }
+    
+    @IBAction func showFoodData(_ sender: UIButton) {
+        itemData = .Food
+        tableView.reloadData()
+    }
+    @IBAction func showWeaponData(_ sender: UIButton) {
+        itemData = .Weapon
+        tableView.reloadData()
+    }
+    @IBAction func showSpecialData(_ sender: UIButton) {
+        itemData = .Special
+        tableView.reloadData()
+    }
+    
     
     @IBAction func signOut(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let addVC = storyboard?.instantiateViewController(withIdentifier: "addVC") as! AddItemViewController
+        addVC.mode = .Add
+    }
 }
 
 extension StoreViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        
+        var numberOfRows: Int
+        
+        switch itemData {
+        case .Food:
+            numberOfRows = items.sort1.count
+        case .Weapon:
+            numberOfRows = items.sort2.count
+        case .Special:
+            numberOfRows = items.sort3.count
+        }
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,6 +84,11 @@ extension StoreViewController: UITableViewDataSource {
 extension StoreViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let editVC = storyboard?.instantiateViewController(withIdentifier: "addVC") as! AddItemViewController
+        editVC.mode = .Edit
+        navigationController?.pushViewController(editVC, animated: true)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -55,5 +100,37 @@ extension StoreViewController: UITableViewDelegate {
         })
         deleteAction.backgroundColor = .red
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+}
+
+extension StoreViewController {
+    
+    func getAllItems() {
+        
+        if let url = URL(string: "http://5c390001.ngrok.io/api/items") {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                }
+                
+                if let response = response as? HTTPURLResponse {
+                    print("status code: \(response.statusCode)")
+                }
+                
+                guard let data = data else { return }
+                do {
+                    let tryCatchData = try JSONDecoder().decode(AllItemsStruct.self, from: data)
+                        self.items.allItems = tryCatchData.items
+                    
+                    DispatchQueue.main.async {
+                        self.activityIndicatorView.removeFromSuperview()
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                    let string = String(data: data, encoding: .utf8)
+                    print(string!)
+                }
+            }.resume()
+        }
     }
 }
