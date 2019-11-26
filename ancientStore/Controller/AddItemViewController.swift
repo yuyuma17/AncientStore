@@ -69,7 +69,22 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         switch mode {
             
         case .Add:
-            addNewItem()
+            
+            let image = itemImageView.image
+            let imageData = image?.pngData()
+            let dataPath = ["pic":imageData!]
+
+            let parameters = [
+                "sort_id"  : itemSortTextField.text!,
+                "item_name" : itemNameTextField.text!,
+                "price" : itemPriceTextField.text!,
+                "stock" : itemInventoryTextField.text!,]
+            
+            requestWithFormData(urlString: "http://35.234.60.173/api/wolf/items", parameters: parameters, dataPath: dataPath) { (Data) in
+
+            }
+
+//            addNewItem()
             let alert = UIAlertController(title: "新增成功", message: "", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "好", style: .default) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)
@@ -138,7 +153,67 @@ extension AddItemViewController {
         task.resume()
     }
     
-    func uploadPic() {
+    func requestWithFormData(urlString: String, parameters: [String: Any], dataPath: [String: Data], completion: @escaping (Data) -> Void){
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let boundary = "Boundary+\(arc4random())\(arc4random())"
+        var body = Data()
         
+        request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        for (key, value) in parameters {
+            body.appendString(string: "--\(boundary)\r\n")
+            body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+            body.appendString(string: "\(value)\r\n")
+        }
+        
+        for (key, value) in dataPath {
+            body.appendString(string: "--\(boundary)\r\n")
+            body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(arc4random())\"\r\n") //此處放入file name，以隨機數代替，可自行放入
+            body.appendString(string: "Content-Type: image/png\r\n\r\n") //image/png 可改為其他檔案類型 ex:jpeg
+            body.append(value)
+            body.appendString(string: "\r\n")
+        }
+        
+        body.appendString(string: "--\(boundary)--\r\n")
+        request.httpBody = body
+        
+        fetchedDataByDataTask(from: request, completion: completion)
+        
+    }
+    
+    private func fetchedDataByDataTask(from request: URLRequest, completion: @escaping (Data) -> Void){
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let response = response as? HTTPURLResponse {
+                print("status code: \(response.statusCode)")
+            }
+            
+            if error != nil{
+                print(error as Any)
+            }else{
+                guard let data = data else{return}
+                completion(data)
+            }
+        }
+        task.resume()
+    }
+    
+}
+
+extension Data{
+    func parseData() -> NSDictionary{
+        
+        let dataDict = try? JSONSerialization.jsonObject(with: self, options: .mutableContainers) as! NSDictionary
+        
+        return dataDict!
+    }
+    
+    mutating func appendString(string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        append(data!)
     }
 }

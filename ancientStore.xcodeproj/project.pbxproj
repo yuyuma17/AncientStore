@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		16BC3CB2238CBAFD00205DB7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC3CB1238CBAFD00205DB7 /* HomeViewController.swift */; };
-		16BC3CB4238CEDDA00205DB7 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC3CB3238CEDDA00205DB7 /* APIManager.swift */; };
 		16D8BAFC238B7C740022D62A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8BAFB238B7C740022D62A /* AppDelegate.swift */; };
 		16D8BAFE238B7C740022D62A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8BAFD238B7C740022D62A /* SceneDelegate.swift */; };
 		16D8BB03238B7C740022D62A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16D8BB01238B7C740022D62A /* Main.storyboard */; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		16BC3CB1238CBAFD00205DB7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		16BC3CB3238CEDDA00205DB7 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		16D8BAF8238B7C740022D62A /* ancientStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ancientStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16D8BAFB238B7C740022D62A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16D8BAFD238B7C740022D62A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				16D8BB12238B7CDF0022D62A /* APIStruct.swift */,
-				16BC3CB3238CEDDA00205DB7 /* APIManager.swift */,
 				16D8BB1D238BBCDA0022D62A /* EnumModel.swift */,
 			);
 			path = Model;
@@ -193,7 +190,6 @@
 			files = (
 				16D8BB1E238BBCDA0022D62A /* EnumModel.swift in Sources */,
 				16D8BB18238B9F300022D62A /* StoreViewController.swift in Sources */,
-				16BC3CB4238CEDDA00205DB7 /* APIManager.swift in Sources */,
 				16D8BB13238B7CDF0022D62A /* APIStruct.swift in Sources */,
 				16D8BAFC238B7C740022D62A /* AppDelegate.swift in Sources */,
 				16D8BB16238B86600022D62A /* LoginViewController.swift in Sources */,
