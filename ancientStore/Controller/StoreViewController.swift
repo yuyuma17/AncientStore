@@ -21,16 +21,16 @@ class StoreViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-        
-        view.addSubview(activityIndicatorView)
-        activityIndicatorView.center = view.center
-        activityIndicatorView.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         getAllItems()
+        
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.center = view.center
+        activityIndicatorView.startAnimating()
     }
     
     @IBAction func showFoodData(_ sender: UIButton) {
@@ -91,7 +91,7 @@ extension StoreViewController: UITableViewDataSource {
             cell.itemPriceLabel.text = "售價：\(items.sort3[indexPath.item].price)"
         }
         
-        cell.itemImageView.image = UIImage(named: "background1")
+        cell.itemImageView.image = UIImage(named: "rice")
         return cell
     }
 }
@@ -121,7 +121,6 @@ extension StoreViewController: UITableViewDelegate {
             editVC.item_id = items.sort3[indexPath.item].id
         }
         navigationController?.pushViewController(editVC, animated: true)
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -133,11 +132,9 @@ extension StoreViewController: UITableViewDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                 switch self.itemData {
                 case .Food:
-                    let url = URL(string: "http://35.234.60.173/api/items/\(self.items.sort1[indexPath.item].id)")!
+                    let url = URL(string: "http://35.234.60.173/api/wolf/items/\(self.items.sort1[indexPath.item].id)")!
                     var request = URLRequest(url: url)
-                    request.httpMethod = "DELETE"
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    request.setValue("application/json", forHTTPHeaderField: "Accept")
+                    request.httpMethod = "Delete"
                     request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
                     
                     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -152,11 +149,9 @@ extension StoreViewController: UITableViewDelegate {
                     }
                     task.resume()
                 case .Weapon:
-                    let url = URL(string: "http://35.234.60.173/api/items/\(self.items.sort2[indexPath.item].id)")!
+                    let url = URL(string: "http://35.234.60.173/api/wolf/items/\(self.items.sort2[indexPath.item].id)")!
                     var request = URLRequest(url: url)
-                    request.httpMethod = "DELETE"
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    request.setValue("application/json", forHTTPHeaderField: "Accept")
+                    request.httpMethod = "Delete"
                     request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
                     
                     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -171,11 +166,9 @@ extension StoreViewController: UITableViewDelegate {
                     }
                     task.resume()
                 case .Special:
-                    let url = URL(string: "http://35.234.60.173/api/items/\(self.items.sort3[indexPath.item].id)")!
+                    let url = URL(string: "http://35.234.60.173/api/wolf/items/\(self.items.sort3[indexPath.item].id)")!
                     var request = URLRequest(url: url)
-                    request.httpMethod = "DELETE"
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    request.setValue("application/json", forHTTPHeaderField: "Accept")
+                    request.httpMethod = "Delete"
                     request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
                     
                     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

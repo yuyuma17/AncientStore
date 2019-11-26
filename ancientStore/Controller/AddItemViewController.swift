@@ -132,4 +132,8 @@ extension AddItemViewController {
         }
         task.resume()
     }
+    
+    func uploadPic() {
+        
+    }
 }
