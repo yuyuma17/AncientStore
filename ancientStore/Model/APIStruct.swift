@@ -80,3 +80,11 @@ class AllItemsClass {
     
     private init() {}
 }
+
+struct ReceiveSaleInfor: Codable {
+    
+    let lv: Int
+    let all_stock: Int
+    let all_total: Int
+    
+}

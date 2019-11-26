@@ -8,11 +8,12 @@
 
 import UIKit
 
-class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let tokens = SavedToken.shared
     var mode = Mode.Add
     let imagePicker = UIImagePickerController()
+    let pickerData = [String](arrayLiteral: "1", "2", "3")
     
     var itemName: String?
     var itemSort: String?
@@ -33,6 +34,10 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePicker.delegate = self
         navigationItem.title = mode.navigationTitle
         
+        let thePicker = UIPickerView()
+        thePicker.delegate = self
+        itemSortTextField.inputView = thePicker
+        
         if mode == Mode.Edit {
             itemNameTextField.text = itemName
             itemSortTextField.text = itemSort
@@ -46,11 +51,33 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.view.endEditing(true)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         itemImageView.image = image
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: UIPickerView Delegation
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        itemSortTextField.text = pickerData[row]
     }
     
     @IBAction func selectAPic(_ sender: UIButton) {
@@ -194,10 +221,10 @@ extension AddItemViewController {
         }
         task.resume()
     }
-    
 }
 
 extension Data{
+    
     func parseData() -> NSDictionary{
         
         let dataDict = try? JSONSerialization.jsonObject(with: self, options: .mutableContainers) as! NSDictionary
