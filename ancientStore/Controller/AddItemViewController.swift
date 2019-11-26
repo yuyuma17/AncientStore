@@ -53,11 +53,6 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func photoAPic(_ sender: UIButton) {
-        imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true)
-    }
     @IBAction func selectAPic(_ sender: UIButton) {
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
@@ -81,10 +76,8 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
                 "stock" : itemInventoryTextField.text!,]
             
             requestWithFormData(urlString: "http://35.234.60.173/api/wolf/items", parameters: parameters, dataPath: dataPath) { (Data) in
-
             }
 
-//            addNewItem()
             let alert = UIAlertController(title: "新增成功", message: "", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "好", style: .default) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)

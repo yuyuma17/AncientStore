@@ -53,7 +53,7 @@ struct AllItemsStruct: Codable {
         let item_name: String
         let price: Int
         let stock: Int?
-        let pic: String?
+        let pic: URL?
         let created_at: String
         let updated_at: String
         

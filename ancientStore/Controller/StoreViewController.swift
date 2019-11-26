@@ -84,17 +84,44 @@ extension StoreViewController: UITableViewDataSource {
             cell.itemNameLabel.text = "名稱：\(items.sort1[indexPath.item].item_name)"
             cell.itemPriceLabel.text = "售價：\(items.sort1[indexPath.item].price)"
             cell.itemInventoryLabel.text = "庫存：\(items.sort1[indexPath.item].stock!)"
+            
+            let task = URLSession.shared.dataTask(with: items.sort1[indexPath.row].pic!) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.itemImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+            task.resume()
+            
         case .Weapon:
             cell.itemNameLabel.text = "名稱：\(items.sort2[indexPath.item].item_name)"
             cell.itemPriceLabel.text = "售價：\(items.sort2[indexPath.item].price)"
             cell.itemInventoryLabel.text = "庫存：\(items.sort2[indexPath.item].stock!)"
+            
+            let task = URLSession.shared.dataTask(with: items.sort2[indexPath.row].pic!) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.itemImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+            task.resume()
+            
         case .Special:
             cell.itemNameLabel.text = "名稱：\(items.sort3[indexPath.item].item_name)"
             cell.itemPriceLabel.text = "售價：\(items.sort3[indexPath.item].price)"
             cell.itemInventoryLabel.text = "庫存：\(items.sort3[indexPath.item].stock!)"
+            
+            let task = URLSession.shared.dataTask(with: items.sort3[indexPath.row].pic!) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        cell.itemImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+            task.resume()
         }
-        
-        cell.itemImageView.image = UIImage(named: "rice")
         return cell
     }
 }
@@ -113,18 +140,47 @@ extension StoreViewController: UITableViewDelegate {
             editVC.itemPrice = "\(items.sort1[indexPath.item].price)"
             editVC.item_id = items.sort1[indexPath.item].id
             editVC.itemInventory = "\(items.sort1[indexPath.item].stock!)"
+            
+            let task = URLSession.shared.dataTask(with: items.sort1[indexPath.row].pic!) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        editVC.itemImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+            task.resume()
+            
         case .Weapon:
             editVC.itemName = items.sort2[indexPath.item].item_name
             editVC.itemSort = "\(items.sort2[indexPath.item].sort_id)"
             editVC.itemPrice = "\(items.sort2[indexPath.item].price)"
             editVC.item_id = items.sort2[indexPath.item].id
             editVC.itemInventory = "\(items.sort2[indexPath.item].stock!)"
+            
+            let task = URLSession.shared.dataTask(with: items.sort2[indexPath.row].pic!) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        editVC.itemImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+            task.resume()
+            
         case .Special:
             editVC.itemName = items.sort3[indexPath.item].item_name
             editVC.itemSort = "\(items.sort3[indexPath.item].sort_id)"
             editVC.itemPrice = "\(items.sort3[indexPath.item].price)"
             editVC.item_id = items.sort3[indexPath.item].id
             editVC.itemInventory = "\(items.sort3[indexPath.item].stock!)"
+            
+            let task = URLSession.shared.dataTask(with: items.sort3[indexPath.row].pic!) { (data, response, error) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        editVC.itemImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+            task.resume()
         }
         navigationController?.pushViewController(editVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
