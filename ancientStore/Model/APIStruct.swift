@@ -37,7 +37,6 @@ struct AddNewItemRequired: Codable {
     
     let item_name: String
     let sort_id: String
-    let sort_name: String
     let price : String
     
 }
@@ -50,7 +49,6 @@ struct AllItemsStruct: Codable {
         
         let id: Int
         let sort_id: Int
-        let sort_name: String
         let item_name: String
         let price: Int
         let stock: Int?

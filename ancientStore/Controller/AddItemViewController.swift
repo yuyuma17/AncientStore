@@ -90,7 +90,7 @@ extension AddItemViewController {
     
     func addNewItem() {
         
-        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, sort_name: "我是分類", price: itemPriceTextField.text!)
+        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
         let url = URL(string: "http://35.234.60.173/api/wolf/items")!
@@ -114,7 +114,7 @@ extension AddItemViewController {
     
     func reviseItem() {
         
-        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, sort_name: "我是分類", price: itemPriceTextField.text!)
+        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
         let url = URL(string: "http://35.234.60.173/api/wolf/items/\(item_id!)")!
