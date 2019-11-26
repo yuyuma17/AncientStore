@@ -31,14 +31,17 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePicker.delegate = self
         navigationItem.title = mode.navigationTitle
         
-        if mode == Mode.Add {
-            backgroundImageView.image = UIImage(named: "background4")
-        } else {
+        if mode == Mode.Edit {
             itemNameTextField.text = itemName
             itemSortTextField.text = itemSort
             itemPriceTextField.text = itemPrice
             backgroundImageView.image = UIImage(named: "background3")
         }
+    }
+    
+    // 點擊空白收鍵盤
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

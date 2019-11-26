@@ -47,7 +47,7 @@ class StoreViewController: UIViewController {
     }
     
     
-    @IBAction func signOut(_ sender: UIBarButtonItem) {
+    @IBAction func backToHome(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     

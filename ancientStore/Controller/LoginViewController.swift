@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    let items = AllItemsClass.shared
     let tokens = SavedToken.shared
     
     @IBOutlet weak var accountTextField: UITextField!
@@ -18,8 +17,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getAllItems()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -64,8 +61,8 @@ extension LoginViewController {
                     if response.statusCode == 200 {
                         let alert = UIAlertController(title: "登入成功！", message: nil, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                            if let storeNavi = self.storyboard?.instantiateViewController(withIdentifier: "StoreNaviVC") as? UINavigationController {
-                                if let destination = storeNavi.viewControllers.first as? StoreViewController {
+                            if let storeNavi = self.storyboard?.instantiateViewController(withIdentifier: "HomeNaviVC") as? UINavigationController {
+                                if let destination = storeNavi.viewControllers.first as? HomeViewController {
                                     
                                     self.decodeData(data!)
                                     self.present(storeNavi, animated: true, completion: nil)
@@ -88,31 +85,6 @@ extension LoginViewController {
         let decoder = JSONDecoder()
         if let data = try? decoder.decode(LoginReceived.self, from: data) {
             tokens.savedToken = data.now_flower
-        }
-    }
-    
-    func getAllItems() {
-        
-        if let url = URL(string: "http://35.234.60.173/api/items") {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let error = error {
-                    print("error: \(error.localizedDescription)")
-                }
-                
-                if let response = response as? HTTPURLResponse {
-                    print("status code: \(response.statusCode)")
-                }
-                
-                guard let data = data else { return }
-                do {
-                    let tryCatchData = try JSONDecoder().decode(AllItemsStruct.self, from: data)
-                        self.items.allItems = tryCatchData.items
-                } catch {
-                    print(error.localizedDescription)
-                    let string = String(data: data, encoding: .utf8)
-                    print(string!)
-                }
-            }.resume()
         }
     }
 }
