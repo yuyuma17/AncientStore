@@ -38,6 +38,7 @@ struct AddNewItemRequired: Codable {
     let item_name: String
     let sort_id: String
     let price : String
+    let stock: String
     
 }
 

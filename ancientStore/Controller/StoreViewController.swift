@@ -83,12 +83,15 @@ extension StoreViewController: UITableViewDataSource {
         case .Food:
             cell.itemNameLabel.text = "名稱：\(items.sort1[indexPath.item].item_name)"
             cell.itemPriceLabel.text = "售價：\(items.sort1[indexPath.item].price)"
+            cell.itemInventoryLabel.text = "庫存：\(items.sort1[indexPath.item].stock!)"
         case .Weapon:
             cell.itemNameLabel.text = "名稱：\(items.sort2[indexPath.item].item_name)"
             cell.itemPriceLabel.text = "售價：\(items.sort2[indexPath.item].price)"
+            cell.itemInventoryLabel.text = "庫存：\(items.sort2[indexPath.item].stock!)"
         case .Special:
             cell.itemNameLabel.text = "名稱：\(items.sort3[indexPath.item].item_name)"
             cell.itemPriceLabel.text = "售價：\(items.sort3[indexPath.item].price)"
+            cell.itemInventoryLabel.text = "庫存：\(items.sort3[indexPath.item].stock!)"
         }
         
         cell.itemImageView.image = UIImage(named: "rice")
@@ -109,16 +112,19 @@ extension StoreViewController: UITableViewDelegate {
             editVC.itemSort = "\(items.sort1[indexPath.item].sort_id)"
             editVC.itemPrice = "\(items.sort1[indexPath.item].price)"
             editVC.item_id = items.sort1[indexPath.item].id
+            editVC.itemInventory = "\(items.sort1[indexPath.item].stock!)"
         case .Weapon:
             editVC.itemName = items.sort2[indexPath.item].item_name
             editVC.itemSort = "\(items.sort2[indexPath.item].sort_id)"
             editVC.itemPrice = "\(items.sort2[indexPath.item].price)"
             editVC.item_id = items.sort2[indexPath.item].id
+            editVC.itemInventory = "\(items.sort2[indexPath.item].stock!)"
         case .Special:
             editVC.itemName = items.sort3[indexPath.item].item_name
             editVC.itemSort = "\(items.sort3[indexPath.item].sort_id)"
             editVC.itemPrice = "\(items.sort3[indexPath.item].price)"
             editVC.item_id = items.sort3[indexPath.item].id
+            editVC.itemInventory = "\(items.sort3[indexPath.item].stock!)"
         }
         navigationController?.pushViewController(editVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)

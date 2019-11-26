@@ -17,6 +17,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     var itemName: String?
     var itemSort: String?
     var itemPrice: String?
+    var itemInventory: String?
     var item_id: Int?
     
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -24,6 +25,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var itemSortTextField: UITextField!
     @IBOutlet weak var itemPriceTextField: UITextField!
+    @IBOutlet weak var itemInventoryTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
             itemNameTextField.text = itemName
             itemSortTextField.text = itemSort
             itemPriceTextField.text = itemPrice
-            backgroundImageView.image = UIImage(named: "background3")
+            itemInventoryTextField.text = itemInventory
         }
     }
     
@@ -90,7 +92,7 @@ extension AddItemViewController {
     
     func addNewItem() {
         
-        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!)
+        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!, stock: itemInventoryTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
         let url = URL(string: "http://35.234.60.173/api/wolf/items")!
@@ -114,7 +116,7 @@ extension AddItemViewController {
     
     func reviseItem() {
         
-        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!)
+        let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!, stock: itemInventoryTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
         let url = URL(string: "http://35.234.60.173/api/wolf/items/\(item_id!)")!
