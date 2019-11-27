@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ancientStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Arcadia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQU-zO-HqL">
                                 <rect key="frame" x="62.5" y="502" width="250" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.011764705882352941" green="0.62745098039215685" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Kza-hv-3AH"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="SmR-xc-45L"/>
@@ -97,6 +97,11 @@
                                 <state key="normal" title="登入">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="te4-ae-jID"/>
                                 </connections>
@@ -122,6 +127,7 @@
                     <connections>
                         <outlet property="accountTextField" destination="D1I-VA-Jnz" id="EyB-Ln-qka"/>
                         <outlet property="headingLabel" destination="91B-Ek-ekl" id="L3V-r3-edg"/>
+                        <outlet property="loginOutlet" destination="rQU-zO-HqL" id="TRW-61-zmd"/>
                         <outlet property="passwordTextField" destination="4Yu-hS-DZW" id="0QY-MV-tM5"/>
                     </connections>
                 </viewController>
@@ -132,26 +138,37 @@
         <!--主城資訊-->
         <scene sceneID="am2-ph-vKM">
             <objects>
-                <viewController id="u6E-Xg-9nG" customClass="HomeViewController" customModule="ancientStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="u6E-Xg-9nG" customClass="HomeViewController" customModule="Arcadia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xwv-47-eLg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qN-MM-Tek">
-                                <rect key="frame" x="141.5" y="567.5" width="92" height="30"/>
-                                <state key="normal" title="進入商店管理"/>
+                                <rect key="frame" x="112.5" y="604.5" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.01176470588" green="0.62745098040000002" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="NxI-vG-fhf"/>
+                                </constraints>
+                                <state key="normal" title="進入商店管理">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="3aI-kN-BS7" kind="show" id="Sjf-cT-PpA"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎回來，您目前的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNp-Bd-FEo">
-                                <rect key="frame" x="109.5" y="224" width="156" height="20.5"/>
+                                <rect key="frame" x="109.5" y="219" width="156" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0qE-y0-EF8">
-                                <rect key="frame" x="88.5" y="269.5" width="198" height="91.5"/>
+                                <rect key="frame" x="88.5" y="254.5" width="198" height="127"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累積銷售金額為：100000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scX-9m-1TP">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="20.5"/>
@@ -171,6 +188,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距離下次升級經驗條：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnO-lr-Qpf">
+                                        <rect key="frame" x="0.0" y="106.5" width="198" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag-arkadia" translatesAutoresizingMaskIntoConstraints="NO" id="z4r-1h-Ea2">
@@ -180,25 +203,35 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home5" translatesAutoresizingMaskIntoConstraints="NO" id="csj-1v-HN7">
-                                <rect key="frame" x="20" y="381" width="335" height="156.5"/>
+                                <rect key="frame" x="20" y="433" width="335" height="156.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="csj-1v-HN7" secondAttribute="height" multiplier="343:160" id="VN0-iu-JzS"/>
                                 </constraints>
                             </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="7qR-LG-MnH">
+                                <rect key="frame" x="72.5" y="406.5" width="230" height="2.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="DKT-2E-3Ci"/>
+                                </constraints>
+                                <color key="progressTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.96848052740097046" green="0.94989186652051116" blue="0.76783323285663896" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="csj-1v-HN7" firstAttribute="leading" secondItem="rIs-K3-l2k" secondAttribute="leading" constant="20" id="9YY-W3-T97"/>
-                            <constraint firstItem="csj-1v-HN7" firstAttribute="top" secondItem="0qE-y0-EF8" secondAttribute="bottom" constant="20" id="AWH-P2-xch"/>
-                            <constraint firstItem="8qN-MM-Tek" firstAttribute="centerX" secondItem="Xwv-47-eLg" secondAttribute="centerX" id="BSA-sq-0sv"/>
                             <constraint firstItem="z4r-1h-Ea2" firstAttribute="trailing" secondItem="rIs-K3-l2k" secondAttribute="trailing" id="EHW-UA-u9a"/>
                             <constraint firstItem="0qE-y0-EF8" firstAttribute="centerX" secondItem="Xwv-47-eLg" secondAttribute="centerX" id="Ehi-yz-PPU"/>
+                            <constraint firstItem="7qR-LG-MnH" firstAttribute="top" secondItem="0qE-y0-EF8" secondAttribute="bottom" constant="25" id="HlY-0D-0fS"/>
+                            <constraint firstItem="8qN-MM-Tek" firstAttribute="top" secondItem="csj-1v-HN7" secondAttribute="bottom" constant="15" id="K0F-EK-xfN"/>
                             <constraint firstItem="wNp-Bd-FEo" firstAttribute="centerX" secondItem="Xwv-47-eLg" secondAttribute="centerX" id="P29-Hq-1JN"/>
+                            <constraint firstItem="7qR-LG-MnH" firstAttribute="centerX" secondItem="Xwv-47-eLg" secondAttribute="centerX" id="WmU-l9-ShZ"/>
                             <constraint firstItem="z4r-1h-Ea2" firstAttribute="leading" secondItem="rIs-K3-l2k" secondAttribute="leading" id="ao2-cM-wf9"/>
-                            <constraint firstItem="wNp-Bd-FEo" firstAttribute="top" secondItem="z4r-1h-Ea2" secondAttribute="bottom" constant="25" id="bkj-cb-a9l"/>
+                            <constraint firstItem="wNp-Bd-FEo" firstAttribute="top" secondItem="z4r-1h-Ea2" secondAttribute="bottom" constant="20" id="bkj-cb-a9l"/>
+                            <constraint firstItem="csj-1v-HN7" firstAttribute="top" secondItem="7qR-LG-MnH" secondAttribute="bottom" constant="25" id="ewU-ll-FyR"/>
                             <constraint firstItem="z4r-1h-Ea2" firstAttribute="top" secondItem="rIs-K3-l2k" secondAttribute="top" constant="20" id="k7d-Ma-okP"/>
-                            <constraint firstItem="8qN-MM-Tek" firstAttribute="top" secondItem="csj-1v-HN7" secondAttribute="bottom" constant="30" id="nbM-aQ-56t"/>
-                            <constraint firstItem="0qE-y0-EF8" firstAttribute="top" secondItem="wNp-Bd-FEo" secondAttribute="bottom" constant="25" id="rZb-42-Kfk"/>
+                            <constraint firstItem="8qN-MM-Tek" firstAttribute="centerX" secondItem="Xwv-47-eLg" secondAttribute="centerX" id="kKG-7q-OPR"/>
+                            <constraint firstItem="0qE-y0-EF8" firstAttribute="top" secondItem="wNp-Bd-FEo" secondAttribute="bottom" constant="15" id="rZb-42-Kfk"/>
                             <constraint firstItem="rIs-K3-l2k" firstAttribute="trailing" secondItem="csj-1v-HN7" secondAttribute="trailing" constant="20" id="zhD-Pw-Etv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rIs-K3-l2k"/>
@@ -211,8 +244,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="enterStoreOutlet" destination="8qN-MM-Tek" id="pVq-rt-Zdq"/>
                         <outlet property="homeImageView" destination="csj-1v-HN7" id="Ziy-T2-Q0r"/>
                         <outlet property="homeLVLabel" destination="UgW-S4-eGX" id="nRS-F1-SLF"/>
+                        <outlet property="progressBar" destination="7qR-LG-MnH" id="goL-yC-Bdr"/>
                         <outlet property="revenueLabel" destination="scX-9m-1TP" id="ZhZ-59-ceA"/>
                         <outlet property="saleItemLabel" destination="B6A-0p-a5h" id="L9J-9U-hF4"/>
                     </connections>
@@ -224,7 +259,7 @@
         <!--商店列表-->
         <scene sceneID="sWe-co-M4F">
             <objects>
-                <viewController id="Esp-V5-O6l" customClass="StoreViewController" customModule="ancientStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Esp-V5-O6l" customClass="StoreViewController" customModule="Arcadia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O2O-Oh-ILH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,7 +268,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.94901960780000005" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseCell" rowHeight="126" id="PRh-q7-dfi" customClass="ItemTableViewCell" customModule="ancientStore" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseCell" rowHeight="126" id="PRh-q7-dfi" customClass="ItemTableViewCell" customModule="Arcadia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PRh-q7-dfi" id="tN2-oc-Ic8">
@@ -379,7 +414,7 @@
         <!--新增商品-->
         <scene sceneID="fg5-ot-yNW">
             <objects>
-                <viewController storyboardIdentifier="addVC" id="JgN-Kg-d3l" customClass="AddItemViewController" customModule="ancientStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addVC" id="JgN-Kg-d3l" customClass="AddItemViewController" customModule="Arcadia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uuo-Md-cqk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

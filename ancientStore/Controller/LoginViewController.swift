@@ -16,11 +16,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet weak var loginOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        test()
+        buttonAnimation()
         launchAnimation()
     }
     
@@ -45,12 +46,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func test() {
+    func buttonAnimation() {
         
         //設置漸層顏色
-        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.3).cgColor,
+        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.85).cgColor,
                                 UIColor.white.withAlphaComponent(1).cgColor,
-                                UIColor.black.withAlphaComponent(0.3).cgColor]
+                                UIColor.black.withAlphaComponent(0.85).cgColor]
         
         //設置每個顏色漸變的點0.0~1.0
         gradientLayer.locations = [0, 0, 0.1]
@@ -58,22 +59,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         gradientLayer.startPoint = CGPoint(x:0, y:0)
         gradientLayer.endPoint = CGPoint(x:1, y:0)
         //Layer大小等於標籤的邊界
-        gradientLayer.frame = headingLabel.bounds
+        gradientLayer.frame = loginOutlet.bounds
         
         //設定動畫，讓顏色由右至左
         let gradientAnimation = CABasicAnimation(keyPath: "locations")
         gradientAnimation.fromValue = [0, 0, 0.2]
         gradientAnimation.toValue = [0.9 , 1, 1]
         gradientAnimation.isRemovedOnCompletion = false
-        gradientAnimation.duration = 3.0
+        gradientAnimation.duration = 2.0
         //重複執行
         gradientAnimation.repeatCount = HUGE
         gradientAnimation.fillMode = .forwards
         //將動畫加在CAGradientLayer上
         gradientLayer.add(gradientAnimation,forKey: nil)
-        //文字套用CAGradientLaye
-        headingLabel.layer.mask = gradientLayer
-        
+        //套用CAGradientLayer
+        loginOutlet.layer.mask = gradientLayer
     }
 }
 
