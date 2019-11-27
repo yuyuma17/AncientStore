@@ -9,14 +9,19 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
+    
     let tokens = SavedToken.shared
+    var gradientLayer = CAGradientLayer()
     
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var headingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        test()
+        launchAnimation()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -39,21 +44,70 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return true
     }
+    
+    func test() {
+        
+        //設置漸層顏色
+        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.3).cgColor,
+                                UIColor.white.withAlphaComponent(1).cgColor,
+                                UIColor.black.withAlphaComponent(0.3).cgColor]
+        
+        //設置每個顏色漸變的點0.0~1.0
+        gradientLayer.locations = [0, 0, 0.1]
+        //漸層起始和結束位置
+        gradientLayer.startPoint = CGPoint(x:0, y:0)
+        gradientLayer.endPoint = CGPoint(x:1, y:0)
+        //Layer大小等於標籤的邊界
+        gradientLayer.frame = headingLabel.bounds
+        
+        //設定動畫，讓顏色由右至左
+        let gradientAnimation = CABasicAnimation(keyPath: "locations")
+        gradientAnimation.fromValue = [0, 0, 0.2]
+        gradientAnimation.toValue = [0.9 , 1, 1]
+        gradientAnimation.isRemovedOnCompletion = false
+        gradientAnimation.duration = 3.0
+        //重複執行
+        gradientAnimation.repeatCount = HUGE
+        gradientAnimation.fillMode = .forwards
+        //將動畫加在CAGradientLayer上
+        gradientLayer.add(gradientAnimation,forKey: nil)
+        //文字套用CAGradientLaye
+        headingLabel.layer.mask = gradientLayer
+        
+    }
 }
 
 extension LoginViewController {
+    
+    private func launchAnimation() {
+        guard let launchScreen = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController() else {return}
+        self.view.addSubview(launchScreen.view)
+        
+        if let image = launchScreen.view.viewWithTag(1) as? UIImageView {
+            
+            UIView.animate(withDuration: 4,
+                           delay: 2,
+                           options: .curveEaseInOut,
+                           animations: {
+                            image.transform = CGAffineTransform(scaleX: 5, y: 5)
+                            launchScreen.view.alpha = 0
+            }) { (finished) in
+                launchScreen.view.removeFromSuperview()
+            }
+        }
+    }
     
     func ownerLogin() {
         
         let passingData = LoginRequired(account: accountTextField.text!, password: passwordTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
-                
+        
         let url = URL(string: "http://35.234.60.173/api/wolf/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-                
+        
         let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
             if let error = error {
                 print ("error: \(error)")

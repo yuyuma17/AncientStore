@@ -121,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="accountTextField" destination="D1I-VA-Jnz" id="EyB-Ln-qka"/>
+                        <outlet property="headingLabel" destination="91B-Ek-ekl" id="L3V-r3-edg"/>
                         <outlet property="passwordTextField" destination="4Yu-hS-DZW" id="0QY-MV-tM5"/>
                     </connections>
                 </viewController>
