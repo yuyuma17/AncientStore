@@ -15,6 +15,13 @@ struct LoginRequired: Codable {
     
 }
 
+struct GetBankRequired: Codable {
+    
+    let userID: String
+    let key: String
+    
+}
+
 struct LoginReceived: Codable {
     
     let now_flower: LoginReceivedInfor
@@ -22,6 +29,19 @@ struct LoginReceived: Codable {
     struct LoginReceivedInfor: Codable {
         
         var api_token: String?
+        let balance: Int
+        
+    }
+}
+
+struct GetBankInfor: Codable {
+    
+    let message: Message
+    
+    struct Message: Codable {
+        
+        let balance: Int
+        let level: Int
         
     }
 }

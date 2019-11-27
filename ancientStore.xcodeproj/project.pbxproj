@@ -19,6 +19,7 @@
 		16D8BB1A238BA4540022D62A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8BB19238BA4540022D62A /* AddItemViewController.swift */; };
 		16D8BB1C238BB4E90022D62A /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8BB1B238BB4E90022D62A /* ItemTableViewCell.swift */; };
 		16D8BB1E238BBCDA0022D62A /* EnumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D8BB1D238BBCDA0022D62A /* EnumModel.swift */; };
+		16DD5397238EA1A500434036 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD5396238EA1A500434036 /* DepositViewController.swift */; };
 		B86114BE2EB2AA0E4E9BC6BF /* Pods_ancientStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F4788F8FB02E38A4345DBB /* Pods_ancientStore.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		16D8BB19238BA4540022D62A /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		16D8BB1B238BB4E90022D62A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		16D8BB1D238BBCDA0022D62A /* EnumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumModel.swift; sourceTree = "<group>"; };
+		16DD5396238EA1A500434036 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
 		49661867AB92A9A03BA0DA42 /* Pods-ancientStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ancientStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-ancientStore/Pods-ancientStore.release.xcconfig"; sourceTree = "<group>"; };
 		B6F4788F8FB02E38A4345DBB /* Pods_ancientStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ancientStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 			children = (
 				16D8BB15238B86600022D62A /* LoginViewController.swift */,
 				16BC3CB1238CBAFD00205DB7 /* HomeViewController.swift */,
+				16DD5396238EA1A500434036 /* DepositViewController.swift */,
 				16D8BB17238B9F300022D62A /* StoreViewController.swift */,
 				16D8BB19238BA4540022D62A /* AddItemViewController.swift */,
 			);
@@ -262,6 +265,7 @@
 				16D8BAFE238B7C740022D62A /* SceneDelegate.swift in Sources */,
 				16D8BB1C238BB4E90022D62A /* ItemTableViewCell.swift in Sources */,
 				16D8BB1A238BA4540022D62A /* AddItemViewController.swift in Sources */,
+				16DD5397238EA1A500434036 /* DepositViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
