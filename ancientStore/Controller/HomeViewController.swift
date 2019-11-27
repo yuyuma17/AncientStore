@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageScrollView
 
 class HomeViewController: UIViewController {
     
@@ -16,6 +17,9 @@ class HomeViewController: UIViewController {
     let items = AllItemsClass.shared
     let tokens = SavedToken.shared
     
+    var images = [UIImage]()
+    
+    @IBOutlet weak var imageScrollView: ImageScrollView!
     @IBOutlet weak var enterStoreOutlet: UIButton!
     @IBOutlet weak var revenueLabel: UILabel!
     @IBOutlet weak var saleItemLabel: UILabel!
@@ -26,12 +30,22 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        progressBar.transform = progressBar.transform.scaledBy(x: 1, y: 10)
+        progressBar.transform = progressBar.transform.scaledBy(x: 1, y: 5)
+        
+        if let image = UIImage(named: "flag-arkadia") {
+            images.append(image)
+        }
+        
+        imageScrollView.setup()
+        imageScrollView.imageContentMode = .aspectFit
+        imageScrollView.initialOffset = .center
+        imageScrollView.display(image: images[0])
         
         getAllItems()
         getSaleInfor()
         buttonAnimation()
     }
+    
     @IBAction func signOut(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }

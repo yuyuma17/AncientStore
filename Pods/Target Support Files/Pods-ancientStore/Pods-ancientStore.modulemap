@@ -1,0 +1,6 @@
+framework module Pods_ancientStore {
+  umbrella header "Pods-ancientStore-umbrella.h"
+
+  export *
+  module * { export * }
+}
