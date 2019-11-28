@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DepositViewController: UIViewController {
     
@@ -16,6 +17,8 @@ class DepositViewController: UIViewController {
     var lastFinishedCoinNumber   = 0
     var animationDuration:Double = 1.5
     var coinNumbers              = [Int]()
+    
+    var audioPlayer : AVAudioPlayer!
     
     let tokens = SavedToken.shared
     var receivedInfor: GetBankInfor?
@@ -36,8 +39,19 @@ class DepositViewController: UIViewController {
         handMoneyLabel.text = "\(tokens.savedToken!.balance) 元"
     }
     
+    func voicePlay() {
+        let soundURL = Bundle.main.url(forResource: "coinMusic", withExtension: "mp3")
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
+        }
+        catch {
+            print(error)
+        }
+        audioPlayer.play()
+    }
+    
     fileprivate func setupView() {
-        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
+//        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1.0)
         let screen = UIScreen.main.bounds
         
         bankView = UIImageView(image: UIImage(named:"moneyBag"))
@@ -57,6 +71,7 @@ class DepositViewController: UIViewController {
     
     @objc fileprivate func fireButtonClickHandler() {
         startCoinanimation()
+        voicePlay()
     }
     
     fileprivate func shakeBank() {
@@ -157,7 +172,7 @@ extension DepositViewController {
         let passingData = GetBankRequired(userID: "arcadia@camp.com", key: "956275912")
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
-        let url = URL(string: "https://b555418b.ngrok.io/api/shop/watch")!
+        let url = URL(string: "https://c1b4390d.ngrok.io/api/shop/watch")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

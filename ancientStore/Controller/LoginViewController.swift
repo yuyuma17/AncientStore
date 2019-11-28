@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let tokens = SavedToken.shared
     var gradientLayer = CAGradientLayer()
+    var audioPlayer : AVAudioPlayer!
     
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -30,10 +32,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         accountTextField.text = ""
         passwordTextField.text = ""
+        
+        audioPlayer.stop()
     }
     
     @IBAction func login(_ sender: UIButton) {
         ownerLogin()
+    }
+    
+    func voicePlay() {
+        let soundURL = Bundle.main.url(forResource: "launchMusic", withExtension: "mp3")
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
+        }
+        catch {
+            print(error)
+        }
+        audioPlayer.play()
     }
     
     // 點擊空白收鍵盤
@@ -91,6 +106,7 @@ extension LoginViewController {
                            animations: {
                             image.transform = CGAffineTransform(scaleX: 5, y: 5)
                             launchScreen.view.alpha = 0
+                            self.voicePlay()
             }) { (finished) in
                 launchScreen.view.removeFromSuperview()
             }

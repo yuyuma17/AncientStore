@@ -229,7 +229,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="s2Z-KE-LbB"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96848052740097046" green="0.94989186652051116" blue="0.76783323285663896" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="wNp-Bd-FEo" firstAttribute="top" secondItem="rIs-K3-l2k" secondAttribute="top" constant="170" id="1fa-r7-zL6"/>
                             <constraint firstItem="csj-1v-HN7" firstAttribute="leading" secondItem="rIs-K3-l2k" secondAttribute="leading" constant="20" id="9YY-W3-T97"/>
@@ -516,7 +516,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="UUh-7u-opA"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="JgN-Kg-d3l" id="yxT-q9-mnj"/>
                                                 </connections>
@@ -527,7 +527,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="shE-ow-UNX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="JgN-Kg-d3l" id="FyI-Sg-q7m"/>
                                                 </connections>
