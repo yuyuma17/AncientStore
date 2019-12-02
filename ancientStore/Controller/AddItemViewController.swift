@@ -52,7 +52,12 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        
+        if textField == itemNameTextField {
+            itemSortTextField.becomeFirstResponder()
+        } else {
+            textField.endEditing(true)
+        }
         return true
     }
     
