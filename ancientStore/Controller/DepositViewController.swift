@@ -35,7 +35,7 @@ class DepositViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getBankMoney()
+//        getBankMoney()
         handMoneyLabel.text = "\(tokens.savedToken!.balance) 元"
     }
     

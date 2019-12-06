@@ -37,7 +37,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func login(_ sender: UIButton) {
-        ownerLogin()
+        
+        HttpManager().post(url: URL(string: "http://35.234.60.173/api/wolf/login")!, account: accountTextField.text!, password: passwordTextField.text!) { (data, response, error) in
+            
+            if let error = error {
+                print ("error: \(error)")
+                return
+            }
+            if let response = response as? HTTPURLResponse {
+                print("status code: \(response.statusCode)")
+                DispatchQueue.main.async {
+                    
+                    if response.statusCode == 200 {
+                        let alert = UIAlertController(title: "登入成功！", message: nil, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                            if let storeNavi = self.storyboard?.instantiateViewController(withIdentifier: "HomeNaviVC") as? UINavigationController {
+                                if let destination = storeNavi.viewControllers.first as? HomeViewController {
+                                    
+                                    self.decodeData(data!)
+                                    self.present(storeNavi, animated: true, completion: nil)
+                                }
+                            }
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        let alert = UIAlertController(title: "帳號或密碼錯誤！", message: nil, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+            
+        }
+//        ownerLogin()
     }
     
     func voicePlay() {

@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -269,11 +270,18 @@
                                 <action selector="signOut:" destination="u6E-Xg-9nG" id="6i9-bp-sfm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="存款" id="aQ7-qG-Jj5">
-                            <connections>
-                                <segue destination="9VR-jc-ykR" kind="show" id="BKM-MY-Ygo"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="存款" id="aQ7-qG-Jj5">
+                                <connections>
+                                    <segue destination="9VR-jc-ykR" kind="show" id="BKM-MY-Ygo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="留言" id="P6L-im-54Q">
+                                <connections>
+                                    <segue destination="MOe-Fh-Gk7" kind="show" id="knG-oU-8b6"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="enterStoreOutlet" destination="8qN-MM-Tek" id="pVq-rt-Zdq"/>
@@ -288,6 +296,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geI-1k-mCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1046.376811594203" y="135.9375"/>
+        </scene>
+        <!--Message Collection View Controller-->
+        <scene sceneID="23D-q0-o6h">
+            <objects>
+                <viewController id="MOe-Fh-Gk7" customClass="MessageCollectionViewController" customModule="Arcadia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wv6-Lj-gGk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a9j-Yf-tTb">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.94901960780000005" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nUg-VA-kAm">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MessageCell" id="84F-dG-zYh">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gjR-Dc-FgM">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="MOe-Fh-Gk7" id="ukn-QN-ecf"/>
+                                    <outlet property="delegate" destination="MOe-Fh-Gk7" id="15H-0V-gJJ"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="a9j-Yf-tTb" firstAttribute="top" secondItem="IL9-iB-qeg" secondAttribute="top" id="EPx-0K-JXK"/>
+                            <constraint firstItem="a9j-Yf-tTb" firstAttribute="bottom" secondItem="IL9-iB-qeg" secondAttribute="bottom" id="EnI-7D-cAo"/>
+                            <constraint firstItem="a9j-Yf-tTb" firstAttribute="leading" secondItem="IL9-iB-qeg" secondAttribute="leading" id="Sju-Vw-k3K"/>
+                            <constraint firstItem="a9j-Yf-tTb" firstAttribute="trailing" secondItem="IL9-iB-qeg" secondAttribute="trailing" id="iWM-aJ-P8Y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IL9-iB-qeg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FOt-c7-mOc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3q-pP-ekt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1045.5999999999999" y="891.90404797601207"/>
         </scene>
         <!--商店列表-->
         <scene sceneID="sWe-co-M4F">
