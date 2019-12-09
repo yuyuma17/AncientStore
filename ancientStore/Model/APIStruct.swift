@@ -108,3 +108,27 @@ struct ReceiveSaleInfor: Codable {
     let all_total: Int
     
 }
+
+struct Allmsg: Codable {
+    
+    let id: Int
+    let sheep_msg: String
+    let wolf_msg: String?
+    let name: String
+    let type: String
+    let score: Int
+    
+}
+
+struct ReceiveAllmsg: Codable {
+    
+    let allmsg: [Allmsg]
+    
+}
+
+struct SendMessage: Codable {
+    
+    let id: String
+    let wolf_msg: String
+    
+}

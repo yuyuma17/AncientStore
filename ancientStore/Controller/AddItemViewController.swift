@@ -161,7 +161,7 @@ extension AddItemViewController {
         
         let url = URL(string: "http://35.234.60.173/api/wolf/items/\(item_id!)")!
         var request = URLRequest(url: url)
-        request.httpMethod = "Put"
+        request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
