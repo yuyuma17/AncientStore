@@ -24,7 +24,6 @@ class DepositViewController: UIViewController {
     var receivedInfor: GetBankInfor?
     
     @IBOutlet weak var handMoneyLabel: UILabel!
-    @IBOutlet weak var bankMoneyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,6 @@ class DepositViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        getBankMoney()
         handMoneyLabel.text = "\(tokens.savedToken!.balance) 元"
     }
     
@@ -162,43 +160,6 @@ class DepositViewController: UIViewController {
         animationGroup.isRemovedOnCompletion = false
         animationGroup.animations = [positionAnimation, scaleAniamtion]
         coinView.layer.add(animationGroup, forKey: "coin animation group")
-    }
-}
-
-extension DepositViewController {
-    
-    func getBankMoney() {
-        
-        let passingData = GetBankRequired(userID: "arcadia@camp.com", key: "956275912")
-        guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
-        
-        let url = URL(string: "https://c1b4390d.ngrok.io/api/shop/watch")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = URLSession.shared.uploadTask(with: request, from: uploadData) { (data, response, error) in
-            if let error = error {
-                print ("error: \(error)")
-                return
-            }
-            if let response = response as? HTTPURLResponse {
-                print("status code: \(response.statusCode)")
-                self.decodeData(data!)
-                DispatchQueue.main.async {
-                    self.bankMoneyLabel.text = "\(self.receivedInfor!.message.balance) 元"
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    func decodeData(_ data: Data) {
-        let decoder = JSONDecoder()
-        if let data = try? decoder.decode(GetBankInfor.self, from: data) {
-            receivedInfor = data
-        }
     }
 }
 
