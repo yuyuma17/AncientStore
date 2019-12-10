@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     var images = [UIImage]()
     
     @IBOutlet weak var imageScrollView: ImageScrollView!
+    @IBOutlet weak var enterMesOutlet: UIButton!
     @IBOutlet weak var enterStoreOutlet: UIButton!
     @IBOutlet weak var revenueLabel: UILabel!
     @IBOutlet weak var saleItemLabel: UILabel!
@@ -43,41 +44,24 @@ class HomeViewController: UIViewController {
         
         getAllItems()
         getSaleInfor()
-        buttonAnimation()
+        
+        floatButtonShadow(enterMesOutlet)
+        floatButtonShadow(enterStoreOutlet)
     }
     
     @IBAction func signOut(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
-    func buttonAnimation() {
-        
-        //設置漸層顏色
-        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.85).cgColor,
-                                UIColor.white.withAlphaComponent(1).cgColor,
-                                UIColor.black.withAlphaComponent(0.85).cgColor]
-        
-        //設置每個顏色漸變的點0.0~1.0
-        gradientLayer.locations = [0, 0, 0.1]
-        //漸層起始和結束位置
-        gradientLayer.startPoint = CGPoint(x:0, y:0)
-        gradientLayer.endPoint = CGPoint(x:1, y:0)
-        //Layer大小等於標籤的邊界
-        gradientLayer.frame = enterStoreOutlet.bounds
-        
-        //設定動畫，讓顏色由右至左
-        let gradientAnimation = CABasicAnimation(keyPath: "locations")
-        gradientAnimation.fromValue = [0, 0, 0.2]
-        gradientAnimation.toValue = [0.9 , 1, 1]
-        gradientAnimation.isRemovedOnCompletion = false
-        gradientAnimation.duration = 2.0
-        //重複執行
-        gradientAnimation.repeatCount = HUGE
-        gradientAnimation.fillMode = .forwards
-        //將動畫加在CAGradientLayer上
-        gradientLayer.add(gradientAnimation,forKey: nil)
-        //套用CAGradientLayer
-        enterStoreOutlet.layer.mask = gradientLayer
+    func floatButtonShadow(_ button: UIButton) {
+        // 陰影偏移量
+        button.layer.shadowOffset = CGSize(width: button.bounds.width / 100, height: button.bounds.height / 20)
+        // 陰影透明度
+        button.layer.shadowOpacity = 0.9
+        // 陰影模糊度
+//        button.layer.shadowRadius = 5
+        // 陰影顏色
+        button.layer.shadowColor = UIColor.black.cgColor
     }
 }
 
@@ -109,9 +93,9 @@ extension HomeViewController {
                     self.saleItemLabel.text = "累積銷售貨物數量為： \(self.allSales!.all_stock) 個"
                     
                     if self.allSales!.lv == 5 {
-                        self.homeLVLabel.text = "主城等級為：\(self.allSales!.lv) 級（已滿級）"
+                        self.homeLVLabel.text = "Lv.Max "
                     } else {
-                        self.homeLVLabel.text = "主城等級為：\(self.allSales!.lv) 級"
+                        self.homeLVLabel.text = "Lv.\(self.allSales!.lv)"
                     }
                     
                     if self.allSales!.lv == 1 {

@@ -30,3 +30,10 @@ enum ItemData {
     case Special
     
 }
+
+enum PicWay {
+    
+    case Camera
+    case Album
+    
+}

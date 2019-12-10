@@ -12,6 +12,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     let tokens = SavedToken.shared
     var mode = Mode.Add
+    var picMode = PicWay.Camera
     let imagePicker = UIImagePickerController()
     let pickerData = [String](arrayLiteral: "1", "2", "3")
     
@@ -104,12 +105,14 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         let alertSheet = UIAlertController(title: "新增照片從", message: nil, preferredStyle: .actionSheet)
         let photoAction = UIAlertAction(title: "相機", style: .default) { (UIAlertAction) in
             
+            self.picMode = .Camera
             self.imagePicker.sourceType = .camera
             self.imagePicker.allowsEditing = true
             self.present(self.imagePicker, animated: true)
         }
         let albumAction = UIAlertAction(title: "照片", style: .default) { (UIAlertAction) in
             
+            self.picMode = .Album
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.allowsEditing = true
             self.present(self.imagePicker, animated: true)
@@ -137,7 +140,14 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         case .Add:
             
             let image = itemImageView.image
-            let imageData = image?.jpegData(compressionQuality: 0.1)
+            var imageData: Data?
+            
+            if picMode == .Camera {
+                imageData = image?.jpegData(compressionQuality: 0.1)
+            } else if picMode == .Album {
+                imageData = image?.pngData()
+            }
+            
             let dataPath = ["pic":imageData!]
 
             let parameters = [
