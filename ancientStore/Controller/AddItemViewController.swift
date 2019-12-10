@@ -27,10 +27,14 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var itemSortTextField: UITextField!
     @IBOutlet weak var itemPriceTextField: UITextField!
     @IBOutlet weak var itemInventoryTextField: UITextField!
+    @IBOutlet weak var selectPicButtonOutlet: UIButton!
+    @IBOutlet weak var cancelPicOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectPicButtonOutlet.isHidden = false
+        cancelPicOutlet.isHidden = true
         imagePicker.delegate = self
         navigationItem.title = mode.navigationTitle
         
@@ -43,6 +47,8 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
             itemSortTextField.text = itemSort
             itemPriceTextField.text = itemPrice
             itemInventoryTextField.text = itemInventory
+            selectPicButtonOutlet.isHidden = true
+            cancelPicOutlet.isHidden = false
         }
     }
     
@@ -61,10 +67,18 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         return true
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            self.selectPicButtonOutlet.isHighlighted = true
+        }
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         itemImageView.image = image
+        selectPicButtonOutlet.isHidden = true
+        cancelPicOutlet.isHidden = false
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -86,9 +100,34 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func selectAPic(_ sender: UIButton) {
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true)
+        
+        let alertSheet = UIAlertController(title: "新增照片從", message: nil, preferredStyle: .actionSheet)
+        let photoAction = UIAlertAction(title: "相機", style: .default) { (UIAlertAction) in
+            
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.allowsEditing = true
+            self.present(self.imagePicker, animated: true)
+        }
+        let albumAction = UIAlertAction(title: "照片", style: .default) { (UIAlertAction) in
+            
+            self.imagePicker.sourceType = .photoLibrary
+            self.imagePicker.allowsEditing = true
+            self.present(self.imagePicker, animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (UIAlertAction) in
+            
+            self.selectPicButtonOutlet.isHighlighted = true
+        }
+        alertSheet.addAction(photoAction)
+        alertSheet.addAction(albumAction)
+        alertSheet.addAction(cancelAction)
+        present(alertSheet, animated: true, completion: nil)
+    }
+    @IBAction func cancelPic(_ sender: UIButton) {
+        itemImageView.image = nil
+        cancelPicOutlet.isHidden = true
+        selectPicButtonOutlet.isHidden = false
+        selectPicButtonOutlet.isHighlighted = true
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
@@ -98,7 +137,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         case .Add:
             
             let image = itemImageView.image
-            let imageData = image?.pngData()
+            let imageData = image?.jpegData(compressionQuality: 0.1)
             let dataPath = ["pic":imageData!]
 
             let parameters = [
