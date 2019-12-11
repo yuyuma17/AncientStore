@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DFYanKaiStd-W5.otf</string>
+		<string>Centaur.ttf</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>APP 需要取用您的相機</string>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sp6-nO-ubb">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sp6-nO-ubb">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,28 +12,51 @@
             <objects>
                 <viewController id="sp6-nO-ubb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5iT-fa-Weq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenView" translatesAutoresizingMaskIntoConstraints="NO" id="I1f-Vo-Xo6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag-arkadia" translatesAutoresizingMaskIntoConstraints="NO" id="Dby-Qb-qeG">
+                                <rect key="frame" x="71" y="381" width="233" height="165"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="233" id="7uO-0l-N5M"/>
+                                    <constraint firstAttribute="height" constant="165" id="H5T-KX-yN6"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title1" translatesAutoresizingMaskIntoConstraints="NO" id="5bE-df-xcL">
+                                <rect key="frame" x="28.5" y="161.5" width="318" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="rLx-mu-bmF"/>
+                                    <constraint firstAttribute="width" constant="318" id="sgz-9d-SQq"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title2" translatesAutoresizingMaskIntoConstraints="NO" id="eCE-8r-IyC">
+                                <rect key="frame" x="91" y="566" width="193" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="193" id="dAv-ET-8RK"/>
+                                    <constraint firstAttribute="height" constant="61" id="eWk-Z0-obC"/>
+                                </constraints>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="0.96848052740000001" green="0.94989186650000001" blue="0.76783323290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="I1f-Vo-Xo6" firstAttribute="leading" secondItem="5iT-fa-Weq" secondAttribute="leading" id="EeS-gC-rQ1"/>
-                            <constraint firstItem="I1f-Vo-Xo6" firstAttribute="top" secondItem="5iT-fa-Weq" secondAttribute="top" id="FgT-6Z-hrz"/>
-                            <constraint firstAttribute="bottom" secondItem="I1f-Vo-Xo6" secondAttribute="bottom" id="IGo-0y-HdL"/>
-                            <constraint firstAttribute="trailing" secondItem="I1f-Vo-Xo6" secondAttribute="trailing" id="VZF-kb-gDl"/>
+                            <constraint firstItem="tol-pw-kal" firstAttribute="bottom" secondItem="eCE-8r-IyC" secondAttribute="bottom" constant="40" id="EWh-Op-xFd"/>
+                            <constraint firstItem="5bE-df-xcL" firstAttribute="centerY" secondItem="5iT-fa-Weq" secondAttribute="centerY" constant="-130" id="Vpg-4u-560"/>
+                            <constraint firstItem="eCE-8r-IyC" firstAttribute="centerX" secondItem="5iT-fa-Weq" secondAttribute="centerX" id="fof-We-fgz"/>
+                            <constraint firstItem="5bE-df-xcL" firstAttribute="centerX" secondItem="5iT-fa-Weq" secondAttribute="centerX" id="gYO-kA-BXI"/>
+                            <constraint firstItem="Dby-Qb-qeG" firstAttribute="centerX" secondItem="5iT-fa-Weq" secondAttribute="centerX" id="mcL-qv-LN9"/>
+                            <constraint firstItem="eCE-8r-IyC" firstAttribute="top" secondItem="Dby-Qb-qeG" secondAttribute="bottom" constant="20" id="o2x-du-5h4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tol-pw-kal"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vV-Al-NSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="368" y="359"/>
+            <point key="canvasLocation" x="365.60000000000002" y="357.57121439280365"/>
         </scene>
     </scenes>
     <resources>
-        <image name="launchScreenView" width="720" height="1280"/>
+        <image name="flag-arkadia" width="100" height="192"/>
+        <image name="title1" width="454" height="114"/>
+        <image name="title2" width="264" height="82"/>
     </resources>
 </document>

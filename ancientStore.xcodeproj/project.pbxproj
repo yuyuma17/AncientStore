@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160A8928239DD37400862E91 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160A8927239DD37400862E91 /* MessageTableViewController.swift */; };
 		160A892A239DD39000862E91 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160A8929239DD39000862E91 /* MessageTableViewCell.swift */; };
+		16402FF723A0947600381E42 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16402FF623A0947600381E42 /* MessageViewController.swift */; };
+		16402FFA23A0ACEE00381E42 /* DFYanKaiStd-W5.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16402FF923A0A0D300381E42 /* DFYanKaiStd-W5.otf */; };
+		16402FFB23A0ACF100381E42 /* Centaur.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16402FF823A0A0CD00381E42 /* Centaur.ttf */; };
+		164785CD23A0CBC100BBBA13 /* title2.png in Resources */ = {isa = PBXBuildFile; fileRef = 164785CB23A0CBC100BBBA13 /* title2.png */; };
+		164785CE23A0CBC100BBBA13 /* title1.png in Resources */ = {isa = PBXBuildFile; fileRef = 164785CC23A0CBC100BBBA13 /* title1.png */; };
 		1671427E238F790600C94991 /* launchMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1671427D238F790600C94991 /* launchMusic.mp3 */; };
 		16714280238F7FA700C94991 /* coinMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1671427F238F7FA600C94991 /* coinMusic.mp3 */; };
 		16764B1D239A2F650016F887 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16764B1C239A2F650016F887 /* HttpManager.swift */; };
@@ -30,8 +34,12 @@
 
 /* Begin PBXFileReference section */
 		012771EC0962A360145A262D /* Pods-ancientStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ancientStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ancientStore/Pods-ancientStore.debug.xcconfig"; sourceTree = "<group>"; };
-		160A8927239DD37400862E91 /* MessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		160A8929239DD39000862E91 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		16402FF623A0947600381E42 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		16402FF823A0A0CD00381E42 /* Centaur.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Centaur.ttf; sourceTree = "<group>"; };
+		16402FF923A0A0D300381E42 /* DFYanKaiStd-W5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFYanKaiStd-W5.otf"; sourceTree = "<group>"; };
+		164785CB23A0CBC100BBBA13 /* title2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title2.png; sourceTree = "<group>"; };
+		164785CC23A0CBC100BBBA13 /* title1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title1.png; sourceTree = "<group>"; };
 		1671427D238F790600C94991 /* launchMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = launchMusic.mp3; sourceTree = "<group>"; };
 		1671427F238F7FA600C94991 /* coinMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinMusic.mp3; sourceTree = "<group>"; };
 		16764B1C239A2F650016F887 /* HttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
@@ -87,8 +95,12 @@
 		16D8BAFA238B7C740022D62A /* ancientStore */ = {
 			isa = PBXGroup;
 			children = (
+				16402FF823A0A0CD00381E42 /* Centaur.ttf */,
+				16402FF923A0A0D300381E42 /* DFYanKaiStd-W5.otf */,
 				1671427D238F790600C94991 /* launchMusic.mp3 */,
 				1671427F238F7FA600C94991 /* coinMusic.mp3 */,
+				164785CC23A0CBC100BBBA13 /* title1.png */,
+				164785CB23A0CBC100BBBA13 /* title2.png */,
 				16D8BB14238B7CE40022D62A /* Model */,
 				16D8BB10238B7CA20022D62A /* View */,
 				16D8BB11238B7CB50022D62A /* Controller */,
@@ -125,7 +137,7 @@
 				16D8BB15238B86600022D62A /* LoginViewController.swift */,
 				16BC3CB1238CBAFD00205DB7 /* HomeViewController.swift */,
 				16DD5396238EA1A500434036 /* DepositViewController.swift */,
-				160A8927239DD37400862E91 /* MessageTableViewController.swift */,
+				16402FF623A0947600381E42 /* MessageViewController.swift */,
 				16D8BB17238B9F300022D62A /* StoreViewController.swift */,
 				16D8BB19238BA4540022D62A /* AddItemViewController.swift */,
 			);
@@ -219,10 +231,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164785CD23A0CBC100BBBA13 /* title2.png in Resources */,
+				164785CE23A0CBC100BBBA13 /* title1.png in Resources */,
 				16D8BB08238B7C750022D62A /* LaunchScreen.storyboard in Resources */,
 				1671427E238F790600C94991 /* launchMusic.mp3 in Resources */,
 				16D8BB05238B7C750022D62A /* Assets.xcassets in Resources */,
+				16402FFB23A0ACF100381E42 /* Centaur.ttf in Resources */,
 				16714280238F7FA700C94991 /* coinMusic.mp3 in Resources */,
+				16402FFA23A0ACEE00381E42 /* DFYanKaiStd-W5.otf in Resources */,
 				16D8BB03238B7C740022D62A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,12 +295,12 @@
 				16764B1D239A2F650016F887 /* HttpManager.swift in Sources */,
 				16D8BAFC238B7C740022D62A /* AppDelegate.swift in Sources */,
 				16D8BB16238B86600022D62A /* LoginViewController.swift in Sources */,
+				16402FF723A0947600381E42 /* MessageViewController.swift in Sources */,
 				16BC3CB2238CBAFD00205DB7 /* HomeViewController.swift in Sources */,
 				160A892A239DD39000862E91 /* MessageTableViewCell.swift in Sources */,
 				16D8BAFE238B7C740022D62A /* SceneDelegate.swift in Sources */,
 				16D8BB1C238BB4E90022D62A /* ItemTableViewCell.swift in Sources */,
 				16D8BB1A238BA4540022D62A /* AddItemViewController.swift in Sources */,
-				160A8928239DD37400862E91 /* MessageTableViewController.swift in Sources */,
 				16DD5397238EA1A500434036 /* DepositViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
