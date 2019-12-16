@@ -195,7 +195,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="s2Z-KE-LbB"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unX-4Q-cgS">
-                                <rect key="frame" x="55" y="425.66666666666669" width="22" height="16"/>
+                                <rect key="frame" x="60" y="425.66666666666669" width="22" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="WlF-E9-TpZ"/>
                                     <constraint firstAttribute="height" constant="16" id="x20-zV-qB4"/>
@@ -205,7 +205,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfZ-YR-yBn">
-                                <rect key="frame" x="337" y="425.66666666666669" width="26" height="16"/>
+                                <rect key="frame" x="332" y="425.66666666666669" width="26" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="GRF-VX-tg8"/>
                                     <constraint firstAttribute="height" constant="16" id="jGC-9c-VFW"/>
@@ -292,8 +292,8 @@
                                             <constraint firstAttribute="height" constant="135" id="yo8-ip-fJO"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-S4-eGX">
-                                        <rect key="frame" x="212" y="0.0" width="28" height="20.333333333333332"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgW-S4-eGX">
+                                        <rect key="frame" x="219.33333333333331" y="0.0" width="20.666666666666657" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -322,9 +322,9 @@
                             <constraint firstItem="sTD-JN-xW0" firstAttribute="top" secondItem="0qE-y0-EF8" secondAttribute="bottom" constant="10" id="V9h-Cb-35M"/>
                             <constraint firstItem="EF0-Aw-FjR" firstAttribute="leading" secondItem="rIs-K3-l2k" secondAttribute="leading" id="Zjj-d3-awu"/>
                             <constraint firstItem="sTD-JN-xW0" firstAttribute="centerX" secondItem="Xwv-47-eLg" secondAttribute="centerX" id="gru-BP-11O"/>
-                            <constraint firstItem="MfZ-YR-yBn" firstAttribute="leading" secondItem="sTD-JN-xW0" secondAttribute="trailing" constant="15" id="nSn-dx-Mc8"/>
+                            <constraint firstItem="MfZ-YR-yBn" firstAttribute="leading" secondItem="sTD-JN-xW0" secondAttribute="trailing" constant="10" id="nSn-dx-Mc8"/>
                             <constraint firstItem="MfZ-YR-yBn" firstAttribute="centerY" secondItem="sTD-JN-xW0" secondAttribute="centerY" id="osh-oR-WPt"/>
-                            <constraint firstItem="sTD-JN-xW0" firstAttribute="leading" secondItem="unX-4Q-cgS" secondAttribute="trailing" constant="15" id="pak-fY-SPv"/>
+                            <constraint firstItem="sTD-JN-xW0" firstAttribute="leading" secondItem="unX-4Q-cgS" secondAttribute="trailing" constant="10" id="pak-fY-SPv"/>
                             <constraint firstItem="jer-ry-dND" firstAttribute="top" secondItem="Zg4-9Q-ZaG" secondAttribute="bottom" constant="20" id="rRg-nv-LYm"/>
                             <constraint firstItem="Zg4-9Q-ZaG" firstAttribute="centerX" secondItem="Xwv-47-eLg" secondAttribute="centerX" id="sm2-H5-eP7"/>
                             <constraint firstItem="unX-4Q-cgS" firstAttribute="centerY" secondItem="sTD-JN-xW0" secondAttribute="centerY" id="ywD-CK-Ls0"/>
@@ -883,16 +883,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="NOb-SA-Uwy">
-                                <rect key="frame" x="104.33333333333333" y="556" width="205.33333333333337" height="24"/>
+                                <rect key="frame" x="94.333333333333329" y="556" width="225.66666666666669" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手頭上現金：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcj-Nb-zYT">
-                                        <rect key="frame" x="0.0" y="0.0" width="122.33333333333333" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="銀行存款總數：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcj-Nb-zYT">
+                                        <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaJ-yg-97s">
-                                        <rect key="frame" x="157.33333333333337" y="0.0" width="48" height="24"/>
+                                        <rect key="frame" x="177.66666666666669" y="0.0" width="48" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
