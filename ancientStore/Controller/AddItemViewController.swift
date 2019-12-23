@@ -22,7 +22,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     var itemInventory: String?
     var item_id: Int?
     
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var itemSortTextField: UITextField!
@@ -33,6 +33,9 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerForKeyboardNotifications()
+        addTapGesture()
         
         selectPicButtonOutlet.isHidden = false
         cancelPicOutlet.isHidden = true
@@ -53,9 +56,19 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    // 點擊空白收鍵盤
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        resignKeyboardNotifications()
+    }
+    
+    private func addTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        scrollView.addGestureRecognizer(tap)
+    }
+    
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -66,6 +79,36 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
             textField.endEditing(true)
         }
         return true
+    }
+    
+    private func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { [weak self] (aNoti) in
+            
+            guard let self = self else { return }
+            self.keyboardWasShown(aNoti)
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { [weak self] (aNoti) in
+            
+            guard let self = self else { return }
+            self.keyboardWillBeHidden(aNoti)
+        }
+    }
+    
+    private func resignKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func keyboardWasShown(_ aNotification: Notification?) {
+        let info = aNotification?.userInfo
+        guard let kbSize = (info?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height + 10, right: 0.0)
+        scrollView.contentInset = contentInsets
+    }
+    
+    private func keyboardWillBeHidden(_ aNotification: Notification?) {
+        let contentInsets: UIEdgeInsets = .zero
+        scrollView.contentInset = contentInsets
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
