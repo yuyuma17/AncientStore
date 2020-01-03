@@ -44,7 +44,7 @@
 		1671427F238F7FA600C94991 /* coinMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinMusic.mp3; sourceTree = "<group>"; };
 		16764B1C239A2F650016F887 /* HttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
 		16BC3CB1238CBAFD00205DB7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		16D8BAF8238B7C740022D62A /* Arcadia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcadia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16D8BAF8238B7C740022D62A /* ARKADIA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKADIA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16D8BAFB238B7C740022D62A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16D8BAFD238B7C740022D62A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		16D8BB02238B7C740022D62A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		16D8BAF9238B7C740022D62A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				16D8BAF8238B7C740022D62A /* Arcadia.app */,
+				16D8BAF8238B7C740022D62A /* ARKADIA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 			);
 			name = ancientStore;
 			productName = ancientStore;
-			productReference = 16D8BAF8238B7C740022D62A /* Arcadia.app */;
+			productReference = 16D8BAF8238B7C740022D62A /* ARKADIA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -454,7 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lacie.ancientStore;
-				PRODUCT_NAME = Arcadia;
+				PRODUCT_NAME = ARKADIA;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -473,7 +473,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lacie.ancientStore;
-				PRODUCT_NAME = Arcadia;
+				PRODUCT_NAME = ARKADIA;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

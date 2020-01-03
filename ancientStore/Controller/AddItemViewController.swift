@@ -34,7 +34,6 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerForKeyboardNotifications()
         addTapGesture()
         
         selectPicButtonOutlet.isHidden = false
@@ -54,6 +53,12 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
             selectPicButtonOutlet.isHidden = true
             cancelPicOutlet.isHidden = false
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        registerForKeyboardNotifications()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
