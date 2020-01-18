@@ -13,6 +13,7 @@
 		16402FFB23A0ACF100381E42 /* Centaur.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16402FF823A0A0CD00381E42 /* Centaur.ttf */; };
 		164785CD23A0CBC100BBBA13 /* title2.png in Resources */ = {isa = PBXBuildFile; fileRef = 164785CB23A0CBC100BBBA13 /* title2.png */; };
 		164785CE23A0CBC100BBBA13 /* title1.png in Resources */ = {isa = PBXBuildFile; fileRef = 164785CC23A0CBC100BBBA13 /* title1.png */; };
+		166AAB2C23D16A5C003517B6 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166AAB2B23D16A5C003517B6 /* APIURL.swift */; };
 		1671427E238F790600C94991 /* launchMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1671427D238F790600C94991 /* launchMusic.mp3 */; };
 		16714280238F7FA700C94991 /* coinMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1671427F238F7FA600C94991 /* coinMusic.mp3 */; };
 		16764B1D239A2F650016F887 /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16764B1C239A2F650016F887 /* HttpManager.swift */; };
@@ -40,6 +41,7 @@
 		16402FF923A0A0D300381E42 /* DFYanKaiStd-W5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFYanKaiStd-W5.otf"; sourceTree = "<group>"; };
 		164785CB23A0CBC100BBBA13 /* title2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title2.png; sourceTree = "<group>"; };
 		164785CC23A0CBC100BBBA13 /* title1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title1.png; sourceTree = "<group>"; };
+		166AAB2B23D16A5C003517B6 /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
 		1671427D238F790600C94991 /* launchMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = launchMusic.mp3; sourceTree = "<group>"; };
 		1671427F238F7FA600C94991 /* coinMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinMusic.mp3; sourceTree = "<group>"; };
 		16764B1C239A2F650016F887 /* HttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		166AAB2D23D16A65003517B6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				166AAB2B23D16A5C003517B6 /* APIURL.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		16D8BAEF238B7C740022D62A = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 				1671427F238F7FA600C94991 /* coinMusic.mp3 */,
 				164785CC23A0CBC100BBBA13 /* title1.png */,
 				164785CB23A0CBC100BBBA13 /* title2.png */,
+				166AAB2D23D16A65003517B6 /* Service */,
 				16D8BB14238B7CE40022D62A /* Model */,
 				16D8BB10238B7CA20022D62A /* View */,
 				16D8BB11238B7CB50022D62A /* Controller */,
@@ -295,6 +306,7 @@
 				16764B1D239A2F650016F887 /* HttpManager.swift in Sources */,
 				16D8BAFC238B7C740022D62A /* AppDelegate.swift in Sources */,
 				16D8BB16238B86600022D62A /* LoginViewController.swift in Sources */,
+				166AAB2C23D16A5C003517B6 /* APIURL.swift in Sources */,
 				16402FF723A0947600381E42 /* MessageViewController.swift in Sources */,
 				16BC3CB2238CBAFD00205DB7 /* HomeViewController.swift in Sources */,
 				160A892A239DD39000862E91 /* MessageTableViewCell.swift in Sources */,

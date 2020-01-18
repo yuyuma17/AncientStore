@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func login(_ sender: UIButton) {
         
-        HttpManager().post(url: URL(string: "http://35.234.60.173/api/wolf/login")!, account: accountTextField.text!, password: passwordTextField.text!) { (data, response, error) in
+        HttpManager().post(url: URL(string: "http://35.229.181.103/api/wolf/login")!, account: accountTextField.text!, password: passwordTextField.text!) { (data, response, error) in
             
             if let error = error {
                 print ("error: \(error)")
