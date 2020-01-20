@@ -77,7 +77,7 @@ extension MessageViewController: UITableViewDelegate {
                     let passingData = SendMessage(id: "\(self.allMsg!.allmsg[indexPath.row].id)", wolf_msg: textField.text!)
                     guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
                     
-                    let url = URL(string: "http://35.234.60.173/api/wolfreplay")!
+                    let url = URL(string: Url.baseUrl + "wolfreplay")!
                     var request = URLRequest(url: url)
                     request.httpMethod = "PUT"
                     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -176,7 +176,7 @@ extension MessageViewController {
     
     func getAllMessages() {
         
-        let url = URL(string: "http://35.234.60.173/api/allmsg")!
+        let url = URL(string: Url.baseUrl + "allmsg")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")

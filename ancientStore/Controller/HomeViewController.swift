@@ -69,7 +69,7 @@ extension HomeViewController {
     
     func getSaleInfor() {
         
-        let url = URL(string: "http://35.234.60.173/api/wolfitem")!
+        let url = URL(string: Url.baseUrl + "wolfitem")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
@@ -121,7 +121,7 @@ extension HomeViewController {
     
     func getAllItems() {
         
-        if let url = URL(string: "http://35.234.60.173/api/items") {
+        if let url = URL(string: Url.baseUrl + "items") {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                     print("error: \(error.localizedDescription)")

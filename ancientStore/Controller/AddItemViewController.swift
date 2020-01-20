@@ -204,7 +204,7 @@ class AddItemViewController: UIViewController, UIImagePickerControllerDelegate, 
                 "price" : itemPriceTextField.text!,
                 "stock" : itemInventoryTextField.text!,]
             
-            requestWithFormData(urlString: "http://35.234.60.173/api/wolf/items", parameters: parameters, dataPath: dataPath) { (Data) in
+            requestWithFormData(urlString: Url.baseUrl + "wolf/items", parameters: parameters, dataPath: dataPath) { (Data) in
             }
 
             let alert = UIAlertController(title: "新增成功", message: "", preferredStyle: .alert)
@@ -232,7 +232,7 @@ extension AddItemViewController {
         let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!, stock: itemInventoryTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
-        let url = URL(string: "http://35.234.60.173/api/wolf/items")!
+        let url = URL(string: Url.baseUrl + "wolf/items")!
         var request = URLRequest(url: url)
         request.httpMethod = "Post"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -256,7 +256,7 @@ extension AddItemViewController {
         let passingData = AddNewItemRequired(item_name: itemNameTextField.text!, sort_id: itemSortTextField.text!, price: itemPriceTextField.text!, stock: itemInventoryTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
-        let url = URL(string: "http://35.234.60.173/api/wolf/items/\(item_id!)")!
+        let url = URL(string: Url.baseUrl + "wolf/items/\(item_id!)")!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

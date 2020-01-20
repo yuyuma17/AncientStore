@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func login(_ sender: UIButton) {
         
-        HttpManager().post(url: URL(string: "http://35.229.181.103/api/wolf/login")!, account: accountTextField.text!, password: passwordTextField.text!) { (data, response, error) in
+        HttpManager().post(url: URL(string: Url.baseUrl + "wolf/login")!, account: accountTextField.text!, password: passwordTextField.text!) { (data, response, error) in
             
             if let error = error {
                 print ("error: \(error)")
@@ -120,7 +120,7 @@ extension LoginViewController {
         let passingData = LoginRequired(account: accountTextField.text!, password: passwordTextField.text!)
         guard let uploadData = try? JSONEncoder().encode(passingData) else { return }
         
-        let url = URL(string: "http://35.234.60.173/api/wolf/login")!
+        let url = URL(string: Url.baseUrl + "wolf/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

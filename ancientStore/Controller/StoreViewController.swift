@@ -194,7 +194,7 @@ extension StoreViewController: UITableViewDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                 switch self.itemData {
                 case .Food:
-                    let url = URL(string: "http://35.234.60.173/api/wolf/items/\(self.items.sort1[indexPath.item].id)")!
+                    let url = URL(string: Url.baseUrl + "wolf/items/\(self.items.sort1[indexPath.item].id)")!
                     var request = URLRequest(url: url)
                     request.httpMethod = "Delete"
                     request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
@@ -211,7 +211,7 @@ extension StoreViewController: UITableViewDelegate {
                     }
                     task.resume()
                 case .Weapon:
-                    let url = URL(string: "http://35.234.60.173/api/wolf/items/\(self.items.sort2[indexPath.item].id)")!
+                    let url = URL(string: Url.baseUrl + "wolf/items/\(self.items.sort2[indexPath.item].id)")!
                     var request = URLRequest(url: url)
                     request.httpMethod = "Delete"
                     request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
@@ -228,7 +228,7 @@ extension StoreViewController: UITableViewDelegate {
                     }
                     task.resume()
                 case .Special:
-                    let url = URL(string: "http://35.234.60.173/api/wolf/items/\(self.items.sort3[indexPath.item].id)")!
+                    let url = URL(string: Url.baseUrl + "wolf/items/\(self.items.sort3[indexPath.item].id)")!
                     var request = URLRequest(url: url)
                     request.httpMethod = "Delete"
                     request.setValue("Bearer \(self.tokens.savedToken!.api_token!)", forHTTPHeaderField: "Authorization")
@@ -258,7 +258,7 @@ extension StoreViewController {
     
     func getAllItems() {
         
-        if let url = URL(string: "http://35.234.60.173/api/items") {
+        if let url = URL(string: Url.baseUrl + "items") {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                     print("error: \(error.localizedDescription)")

@@ -10,6 +10,6 @@ import Foundation
 
 struct Url {
     
-    static let url = "http://35.229.181.103"
+    static let baseUrl = "http://35.229.181.103/api/"
     
 }
