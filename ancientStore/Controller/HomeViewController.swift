@@ -50,7 +50,14 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let alert = UIAlertController(title: "要登出嗎？", message: nil, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "No", style: .default, handler: nil)
+        let action2 = UIAlertAction(title: "OK", style: .destructive) { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action1)
+        alert.addAction(action2)
+        present(alert, animated: true, completion: nil)
     }
     
     func floatButtonShadow(_ button: UIButton) {

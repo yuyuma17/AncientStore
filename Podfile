@@ -9,4 +9,5 @@ target 'ancientStore' do
 
   # Pods for ancientStore
   pod 'ImageScrollView'
+  pod 'EFCountingLabel'
 end

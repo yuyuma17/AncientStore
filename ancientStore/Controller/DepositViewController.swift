@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import EFCountingLabel
 
 class DepositViewController: UIViewController {
     
@@ -20,10 +21,13 @@ class DepositViewController: UIViewController {
     
     var audioPlayer : AVAudioPlayer!
     
+    var startMoney: CGFloat = 1200000
+    var currentMoney: CGFloat = 2200000
+    
     let tokens = SavedToken.shared
     var receivedInfor: GetBankInfor?
     
-    @IBOutlet weak var handMoneyLabel: UILabel!
+    @IBOutlet weak var handMoneyLabel: EFCountingLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +38,7 @@ class DepositViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        handMoneyLabel.text = "\(tokens.savedToken!.balance) 元"
+        handMoneyLabel.text = "\(Int(startMoney))"
     }
     
     func voicePlay() {
@@ -70,6 +74,11 @@ class DepositViewController: UIViewController {
     @objc fileprivate func fireButtonClickHandler() {
         startCoinanimation()
         voicePlay()
+        handMoneyLabel.countFrom(startMoney, to: currentMoney, withDuration: 4.5)
+        handMoneyLabel.completionBlock = { () in
+            self.startMoney = self.currentMoney
+            self.currentMoney += 1000000
+        }
     }
     
     fileprivate func shakeBank() {
