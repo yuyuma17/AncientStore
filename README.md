@@ -17,7 +17,7 @@ Team Members：
 
 - **Backend**
 
-	<a href="https://github.com/Shiva1010">Shiva</a> and <a href="https://github.com/1984-zen">Zen</a> were responsible for the <a href="https://github.com/Shiva1010/SheepChild">Backend Server</a>.（GCP、PHP Laravel、<a href="https://hackmd.io/caMl1z50Qnm-5a8rFIkKAg">API Document</a>
+	<a href="https://github.com/Shiva1010">Shiva</a> and <a href="https://github.com/1984-zen">Zen</a> were responsible for the <a href="https://github.com/Shiva1010/SheepChild">Backend Server</a>.（GCP、PHP Laravel、<a href="https://hackmd.io/caMl1z50Qnm-5a8rFIkKAg">API Document</a>）
 
 iOS Version GIF Demo
 ==========================
